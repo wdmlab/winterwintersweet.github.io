@@ -91,12 +91,12 @@
   <entry>
     <title>【二叉树】116 填充每个结点的下一个右侧结点指针</title>
     <url>/2021/12/31/23-25-30/</url>
-    <content><![CDATA[<span id="more"></span>
-
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/">116 填充每个结点的下一个右侧结点指针</a></p>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/">116 填充每个结点的下一个右侧结点指针</a></p>
 <hr>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>1.题目的要求：使每个结点的指针指向它右侧的结点。</p>
 <p>2.对于每一个结点要做的事情：让其左子树的根结点指向右子树的根结点。举例：对于1来说，是让2指向3 。</p>
+<span id="more"></span>
+
 <p>所以写一个函数A，其功能是让其左子树的根结点指向右子树的根结点。</p>
 <p>3.对于一个结点，先对该结点进行“让其左子树的根结点指向右子树的根结点”功能，再对其左右子树做同样的操作，这是<strong>根左右的前序遍历框架</strong>。</p>
 <p>4.但是依照上述操作不会使5指向6，因为对2进行该函数可以使4指向5，对3进行该函数可以使6指向7，但都无法使5指向6 。</p>
