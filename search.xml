@@ -70,7 +70,6 @@
     <title>【二叉树】226 翻转二叉树</title>
     <url>/2021/12/31/10-44-49/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/invert-binary-tree/">226 翻转二叉树</a></p>
-<hr>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>【该做什么】翻转当前节点的左右子树</p>
 <p>【什么时候做】先翻转当前节点的左右子树，再对以左右子树根节点为根的子树进行相同的操作，即前序遍历。</p>
 <span id="more"></span>
