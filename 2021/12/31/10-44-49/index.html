@@ -19,25 +19,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"winterwintersweet.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":15,"offset":10},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="走夜路请放声歌唱">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wintersweetsblog">
-<meta property="og:url" content="https://winterwintersweet.github.io/index.html">
+<meta name="description" content="题目226 翻转二叉树  思路【该做什么】翻转当前节点的左右子树 【什么时候做】先翻转当前节点的左右子树，再对以左右子树根节点为根的子树进行相同的操作，即前序遍历。  代码12345678910111213141516class Solution &amp;#123;public:    TreeNode* invertTree(TreeNode* root) &amp;#123;        &#x2F;&#x2F;对该结点的操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【二叉树】226 翻转二叉树">
+<meta property="og:url" content="https://winterwintersweet.github.io/2021/12/31/10-44-49/index.html">
 <meta property="og:site_name" content="wintersweetsblog">
-<meta property="og:description" content="走夜路请放声歌唱">
+<meta property="og:description" content="题目226 翻转二叉树  思路【该做什么】翻转当前节点的左右子树 【什么时候做】先翻转当前节点的左右子树，再对以左右子树根节点为根的子树进行相同的操作，即前序遍历。  代码12345678910111213141516class Solution &amp;#123;public:    TreeNode* invertTree(TreeNode* root) &amp;#123;        &#x2F;&#x2F;对该结点的操">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-31T02:44:49.789Z">
+<meta property="article:modified_time" content="2021-12-31T02:46:57.866Z">
 <meta property="article:author" content="coder">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://winterwintersweet.github.io/">
+<link rel="canonical" href="https://winterwintersweet.github.io/2021/12/31/10-44-49/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://winterwintersweet.github.io/2021/12/31/10-44-49/","path":"2021/12/31/10-44-49/","title":"【二叉树】226 翻转二叉树"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>wintersweetsblog</title>
+<title>【二叉树】226 翻转二叉树 | wintersweetsblog</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -68,7 +70,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">wintersweetsblog</h1>
+      <p class="site-title">wintersweetsblog</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">试营业</p>
@@ -131,7 +133,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -144,6 +146,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%A7%A3%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">其他解法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -197,16 +200,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://winterwintersweet.github.io/2021/12/31/10-44-49/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -219,9 +223,9 @@
       <meta itemprop="name" content="wintersweetsblog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/31/10-44-49/" class="post-title-link" itemprop="url">【二叉树】226 翻转二叉树</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          【二叉树】226 翻转二叉树
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -245,6 +249,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -254,7 +265,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/invert-binary-tree/">226 翻转二叉树</a></p>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/invert-binary-tree/">226 翻转二叉树</a></p>
 <hr>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>【该做什么】翻转当前节点的左右子树</p>
 <p>【什么时候做】先翻转当前节点的左右子树，再对以左右子树根节点为根的子树进行相同的操作，即前序遍历。</p>
@@ -268,7 +279,6 @@
 
 <p>提交后发现<strong>采用后序遍历用时更少，内存消耗与前序遍历差不多</strong>。</p>
 
-      
     </div>
 
     
@@ -276,94 +286,18 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://winterwintersweet.github.io/2021/12/30/19-00-06/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wintersweetsblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/30/19-00-06/" class="post-title-link" itemprop="url">《记一忘三二》</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-12-30 19:00:06 / 修改时间：21:30:37" itemprop="dateCreated datePublished" datetime="2021-12-30T19:00:06+08:00">2021-12-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">文学</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="李娟记"><a href="#李娟记" class="headerlink" title="李娟记"></a>李娟记</h1><p>1.从前有人生了一个女儿，她决心要给她取一个最特别的名字，全世界独一无二的名字。为此她翻烂了字典，终于由一部电影得到启发。她激动极了。</p>
-<p>她为她取名为“娟”。</p>
-<p>是的……就是我……李娟……</p>
-<p>2.每当我向人做自我介绍，对方一听往往立刻接口：“哦我也认识一个李娟。”我说：“是的，这个名字很普遍。“<strong>开场白万年不变</strong>。</p>
-<p>2.话说我从小就佩服“佚名”这个人，到处发表作品，创作跨美术文学诗歌多届，还活了好几千年。</p>
-<p>3.长久以来，我的写作全都围绕个人生活展开。于是常有人替我担心：人的经历是有限的，万一把生活写完了怎么办？我不能理解“写完”是什么意思。好像写作就是开一瓶饮料，喝完拉倒。<strong>可我打开
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/12/30/19-00-06/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/30/19-00-06/" rel="prev" title="《记一忘三二》">
+                  <i class="fa fa-chevron-left"></i> 《记一忘三二》
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -372,6 +306,8 @@
 
 
 
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTA3MS8zMTUzOQ=="></div>
 </div>
   </main>
 
