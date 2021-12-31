@@ -232,7 +232,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-12-31 10:44:49 / 修改时间：10:46:57" itemprop="dateCreated datePublished" datetime="2021-12-31T10:44:49+08:00">2021-12-31</time>
+      <time title="创建时间：2021-12-31 10:44:49 / 修改时间：11:11:00" itemprop="dateCreated datePublished" datetime="2021-12-31T10:44:49+08:00">2021-12-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,16 +258,14 @@
 <hr>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>【该做什么】翻转当前节点的左右子树</p>
 <p>【什么时候做】先翻转当前节点的左右子树，再对以左右子树根节点为根的子树进行相同的操作，即前序遍历。</p>
-<hr>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//对该结点的操作</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* temp = root-&gt;left;</span><br><span class="line">        root-&gt;left = root-&gt;right;</span><br><span class="line">        root-&gt;right = temp;</span><br><span class="line">        <span class="comment">//左右子树</span></span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h1><p>该题还可用<strong>左右根的后序遍历框架</strong>来解决，即对于一个结点，先让左子树翻转它的子节点，再让右子树翻转它的子节点，最后翻转本结点的左右子树。</p>
-<hr>
-<h1 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        TreeNode* temp = root-&gt;left;</span><br><span class="line">        root-&gt;left = root-&gt;right;</span><br><span class="line">        root-&gt;right = temp;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>提交后发现<strong>采用后序遍历用时更少，内存消耗与前序遍历差不多</strong>。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/12/31/10-44-49/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -316,9 +314,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-12-30 19:00:06 / 修改时间：21:30:37" itemprop="dateCreated datePublished" datetime="2021-12-30T19:00:06+08:00">2021-12-30</time>
+      <time title="创建时间：2021-12-30 19:00:06" itemprop="dateCreated datePublished" datetime="2021-12-30T19:00:06+08:00">2021-12-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-12-31 11:10:30" itemprop="dateModified" datetime="2021-12-31T11:10:30+08:00">2021-12-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -341,11 +345,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="李娟记"><a href="#李娟记" class="headerlink" title="李娟记"></a>李娟记</h1><p>1.从前有人生了一个女儿，她决心要给她取一个最特别的名字，全世界独一无二的名字。为此她翻烂了字典，终于由一部电影得到启发。她激动极了。</p>
-<p>她为她取名为“娟”。</p>
-<p>是的……就是我……李娟……</p>
-<p>2.每当我向人做自我介绍，对方一听往往立刻接口：“哦我也认识一个李娟。”我说：“是的，这个名字很普遍。“<strong>开场白万年不变</strong>。</p>
-<p>2.话说我从小就佩服“佚名”这个人，到处发表作品，创作跨美术文学诗歌多届，还活了好几千年。</p>
-<p>3.长久以来，我的写作全都围绕个人生活展开。于是常有人替我担心：人的经历是有限的，万一把生活写完了怎么办？我不能理解“写完”是什么意思。好像写作就是开一瓶饮料，喝完拉倒。<strong>可我打开
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/12/30/19-00-06/#more" rel="contents">
