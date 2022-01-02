@@ -153,4 +153,30 @@
         <category>未分类</category>
       </categories>
   </entry>
+  <entry>
+    <title>【二叉树】654 最大二叉树</title>
+    <url>/2022/01/02/22-28-21/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/maximum-binary-tree/">654 最大二叉树</a></p>
+<hr>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p><strong>1.结合例子理解最大二叉树的定义（以nums = [3,2,1,6,0,5]为例）</strong></p>
+<p>二叉树的根是数组nums中的最大元素，即6。6左边的数字[3,2,1]全在6的左子树中出现。6右边的数字[0,5]全在6的右子树中出现。</p>
+<span id="more"></span>
+
+<p>[3,2,1]中再找最大的构成根节点，它左边的在左子树中出现，它右边的在右子树中出现。</p>
+<p>[0,5]中再找最大的构成根节点，它左边的在左子树中出现，它右边的在右子树中出现。</p>
+<p><strong>2.明确根节点该做的事</strong></p>
+<p>根节点要做的事就是使自己成为自己所属范围内的几个数字中的最大的那个。</p>
+<p><strong>3.套用框架</strong></p>
+<p>使根节点等于最大值，再使其左子树的根节点称为最大值，右子树的根节点成为最大值。这是<strong>根左右的前序遍历框架</strong></p>
+<hr>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">constructMaximumBinaryTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(nums,<span class="number">0</span>,nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给定nums[low...high],构造最大二叉树</span></span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">        <span class="comment">/***根节点要做的事：找出最大的元素构建一个结点***/</span></span><br><span class="line">        <span class="keyword">if</span>(low &gt; high)&#123;  <span class="comment">//注意只有大于的时候才能换，如果是等于的时候那么说明是有一个元素的，不能返回空。</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = low; i &lt;= high; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(max &lt; nums[i])&#123;</span><br><span class="line">                max = nums[i];</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(max);</span><br><span class="line">        <span class="comment">//对最大值左右的元素做相同的操作构造根节点的左右子树</span></span><br><span class="line">        root-&gt;left = <span class="built_in">build</span>(nums,low,index - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">build</span>(nums,index + <span class="number">1</span>,high);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>1.数组元素的大小：<code>nums.size()</code></p>
+<p>2.</p>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
 </search>
