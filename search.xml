@@ -206,4 +206,25 @@
         <category>算法刷题</category>
       </categories>
   </entry>
+  <entry>
+    <title>【106】从中序遍历和后序遍历构造二叉树</title>
+    <url>/2022/01/04/22-24-52/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/">106 从中序遍历和后序遍历构造二叉树</a></p>
+<hr>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>本题思路与<a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">从前序与中序遍历序列构造二叉树</a>类似，唯一需要思考的地方是创建左右子树的时候参数是什么。</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以此树为例</span><br><span class="line">      1</span><br><span class="line">     / \</span><br><span class="line">    2   3</span><br><span class="line">   / \ / \</span><br><span class="line">  5  4 8  9</span><br><span class="line">    / \</span><br><span class="line">   6   7</span><br></pre></td></tr></table></figure>
+
+<p>中序遍历结果：26471839</p>
+<p>后序遍历结果：67428931</p>
+<hr>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder, vector&lt;<span class="keyword">int</span>&gt;&amp; postOrder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(inOrder,<span class="number">0</span>,inOrder.<span class="built_in">size</span>() - <span class="number">1</span>,postOrder,<span class="number">0</span>,postOrder.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder,<span class="keyword">int</span> inStart,<span class="keyword">int</span> inEnd,vector&lt;<span class="keyword">int</span>&gt;&amp; postOrder,<span class="keyword">int</span> postStart,<span class="keyword">int</span> postEnd)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(inStart &gt; inEnd)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> value = postOrder[postEnd];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = inStart; i &lt;= inOrder.<span class="built_in">size</span>() - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(value == inOrder[i])&#123;</span><br><span class="line">                index = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(value);</span><br><span class="line">        <span class="keyword">int</span> leftSize = index - inStart;</span><br><span class="line">        root-&gt;left = <span class="built_in">build</span>(inOrder,inStart,index - <span class="number">1</span>,postOrder,postStart,postStart + leftSize - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">build</span>(inOrder,index + <span class="number">1</span>,inEnd,postOrder,postStart + leftSize,postEnd - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>对于一个数组，从第一个元素的下标到最后一个元素的下标是<strong>0 ~ nums.size()  - 1</strong></p>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
 </search>
