@@ -207,7 +207,7 @@
       </categories>
   </entry>
   <entry>
-    <title>【106】从中序遍历和后序遍历构造二叉树</title>
+    <title>【二叉树】106 从中序遍历和后序遍历构造二叉树</title>
     <url>/2022/01/04/22-24-52/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/">106 从中序遍历和后序遍历构造二叉树</a></p>
 <hr>
