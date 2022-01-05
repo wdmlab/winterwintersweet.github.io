@@ -232,6 +232,8 @@
     <url>/2022/01/05/23-35-48/</url>
     <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/find-duplicate-subtrees/">652 寻找重复的子树</a></p>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p><strong>1.整体思路</strong>：找到以每个结点为根的子树长什么样子，然后找出其中相同的。</p>
+<span id="more"></span>
+
 <p><strong>2.如何找到以每个结点为根的子树长什么样子？</strong></p>
 <p>对每个子树进行遍历形成遍历序列，如果是空则用“#”代替</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">String <span class="title">subTitle</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;#&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String left = find(root.left);</span><br><span class="line">    String right = find(root.right);</span><br><span class="line">    String subTree = left + <span class="string">&quot;,&quot;</span> + right + <span class="string">&quot;,&quot;</span> + root.val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
