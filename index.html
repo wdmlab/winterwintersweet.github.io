@@ -171,7 +171,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -211,6 +211,82 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://winterwintersweet.github.io/2022/01/05/23-35-48/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="coder">
+      <meta itemprop="description" content="走夜路请放声歌唱">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wintersweetsblog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/05/23-35-48/" class="post-title-link" itemprop="url">【二叉树】652 寻找重复的子树</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-duplicate-subtrees/">652 寻找重复的子树</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p><strong>1.整体思路</strong>：找到以每个结点为根的子树长什么样子，然后找出其中相同的。</p>
+<p><strong>2.如何找到以每个结点为根的子树长什么样子？</strong></p>
+<p>对每个子树进行遍历形成遍历序列，如果是空则用“#”代替</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">String <span class="title">subTitle</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;#&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String left = find(root.left);</span><br><span class="line">    String right = find(root.right);</span><br><span class="line">    String subTree = left + <span class="string">&quot;,&quot;</span> + right + <span class="string">&quot;,&quot;</span> + root.val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.如何找出其中相同的？</strong></p>
+<p>利用HashMap存储子树序列与对应的该子树序列的个数，用LinkedList存储具有相同结构的子树的根节点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> time = map.getOrDefault(subTree,<span class="number">0</span>);  <span class="comment">//获得subTree对应的值，如果map中还没有subTree，那么返回的是0</span></span><br><span class="line"><span class="keyword">if</span>(time == <span class="number">1</span>)&#123;</span><br><span class="line">       list.add(root);</span><br><span class="line">&#125;</span><br><span class="line">map.put(subTree,time + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*存储以每个结点为根的树的序列和对应的个数*/</span></span><br><span class="line">    HashMap&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">/*存储具有相同结构的子树的根结点*/</span></span><br><span class="line">    LinkedList&lt;TreeNode&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="comment">/*主函数*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">findDuplicateSubtrees</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        find(root);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**找具有相同结构的子树，并把根节点放到list集合中 */</span></span><br><span class="line">    <span class="function">String <span class="title">find</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;#&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String left = find(root.left);</span><br><span class="line">        String right = find(root.right);</span><br><span class="line">        String subTree = left + <span class="string">&quot;,&quot;</span> + right + <span class="string">&quot;,&quot;</span> + root.val;</span><br><span class="line">        <span class="keyword">int</span> time = map.getOrDefault(subTree,<span class="number">0</span>);  <span class="comment">//获得subTree对应的值，如果map中还没有subTree，那么返回的是0</span></span><br><span class="line">        <span class="keyword">if</span>(time == <span class="number">1</span>)&#123;</span><br><span class="line">            list.add(root);</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(subTree,time + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> subTree;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
