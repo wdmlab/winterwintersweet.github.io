@@ -250,10 +250,13 @@
       </categories>
   </entry>
   <entry>
-    <title></title>
+    <title>视频测试</title>
     <url>/2022/01/06/17-33-34/</url>
     <content><![CDATA[<iframe align="absmiddle"  src="//player.bilibili.com/player.html?aid=380466799&bvid=BV13Z4y1S7jr&cid=476828375&page=1" scrolling="auto" border="0" marginwidth="0" frameborder="no" framespacing="0" allowfullscreen="true" style="border:none; textalgin:center; float:center; width: 840px; height: 460px; max-width: 100%"> </iframe>
 
 ]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
   </entry>
 </search>
