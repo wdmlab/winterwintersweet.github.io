@@ -314,6 +314,7 @@
 <h1>思路</h1>
 <p><strong>什么是序列化和反序列化</strong></p>
 <p>二叉树的序列化就是把二叉树转变成字符串，反序列化就是一个字符串变成一棵树。</p>
+<span id="more"></span>
 <p><strong>具体思路</strong></p>
 <p><strong>1.序列化</strong></p>
 <p>树的样子：</p>
