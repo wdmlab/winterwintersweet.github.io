@@ -1,67 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>【二叉树】114 二叉树展开为链表</title>
-    <url>/2022/01/01/12-57-01/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/">114 二叉树展开为链表</a></p>
+    <title>【二叉树】106 从中序遍历和后序遍历构造二叉树</title>
+    <url>/2022/01/04/22-24-52/</url>
+    <content><![CDATA[<h1>题目</h1>
+<p><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/">106 从中序遍历和后序遍历构造二叉树</a></p>
 <hr>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p><strong>1.将二叉树展开成链表是怎么一个过程</strong></p>
+<h1>思路</h1>
+<p>本题思路与<a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">从前序与中序遍历序列构造二叉树</a>类似，唯一需要思考的地方是创建左右子树的时候参数是什么。</p>
 <span id="more"></span>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以形如此的二叉树A为例：</span><br><span class="line">         1     </span><br><span class="line">        / \</span><br><span class="line">       2   5</span><br><span class="line">二叉树A转换成链表的过程是：</span><br><span class="line">         1             1</span><br><span class="line">        / \  -----&gt;     \</span><br><span class="line">       2   5             2</span><br><span class="line">                          \</span><br><span class="line">                           5</span><br></pre></td></tr></table></figure>
-
-<p><strong>2.定义函数flatten的功能</strong></p>
-<p>函数flatten的功能是把一棵二叉树展开成一个链表</p>
-<p><strong>3.运用框架</strong></p>
-<p>对于一个节点，把它的左子树展开成一个链表，再把它的右子树展开成一个链表，最后再对以该节点为根节点的树展开成链表。<strong>这是左右根的后序遍历框架。</strong></p>
-<p><strong>4.例子</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    1              1               1</span><br><span class="line">   / \            / \               \</span><br><span class="line">  2   3  ----&gt;   2   3  ----&gt;        2</span><br><span class="line"> / \ / \          \   \               \</span><br><span class="line">4  5 6  7          4   6               4</span><br><span class="line">                    \   \               \</span><br><span class="line">                     5   7               5</span><br><span class="line">                                          \</span><br><span class="line">                                           3</span><br><span class="line">                                            \</span><br><span class="line">                                             6</span><br><span class="line">                                              \</span><br><span class="line">                                               7</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以此树为例</span><br><span class="line">      1</span><br><span class="line">     / \</span><br><span class="line">    2   3</span><br><span class="line">   / \ / \</span><br><span class="line">  5  4 8  9</span><br><span class="line">    / \</span><br><span class="line">   6   7</span><br></pre></td></tr></table></figure>
+<p>中序遍历结果：26471839</p>
+<p>后序遍历结果：67428931</p>
 <hr>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">flatten</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">flatten</span>(root-&gt;left);  <span class="comment">//把左子树展开成链表</span></span><br><span class="line">        <span class="built_in">flatten</span>(root-&gt;right); <span class="comment">//把右子树展开成链表</span></span><br><span class="line">        <span class="comment">//记录下根的左右子树（左右子树均已展开成链表）</span></span><br><span class="line">        TreeNode* left = root-&gt;left;</span><br><span class="line">        TreeNode* right = root-&gt;right;</span><br><span class="line">        <span class="comment">//对根节点进行操作</span></span><br><span class="line">        <span class="comment">//1.将左子树接到右子树的位置</span></span><br><span class="line">        root-&gt;left = <span class="literal">nullptr</span>;</span><br><span class="line">        root-&gt;right = left;</span><br><span class="line">        <span class="comment">//2.将原来的右子树接到现在的右子树下边</span></span><br><span class="line">        TreeNode* node = root;</span><br><span class="line">        <span class="keyword">while</span>(node-&gt;right != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            node = node-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        node-&gt;right = right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>算法刷题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【二叉树】116 填充每个结点的下一个右侧结点指针</title>
-    <url>/2021/12/31/23-25-30/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/">116 填充每个结点的下一个右侧结点指针</a></p>
-<hr>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>1.题目的要求：使每个结点的指针指向它右侧的结点。</p>
-<p>2.对于每一个结点要做的事情：让其左子树的根结点指向右子树的根结点。举例：对于1来说，是让2指向3 。</p>
-<span id="more"></span>
-
-<p>所以写一个函数A，其功能是让其左子树的根结点指向右子树的根结点。</p>
-<p>3.对于一个结点，先对该结点进行“让其左子树的根结点指向右子树的根结点”功能，再对其左右子树做同样的操作，这是<strong>根左右的前序遍历框架</strong>。</p>
-<p>4.但是依照上述操作不会使5指向6，因为对2进行该函数可以使4指向5，对3进行该函数可以使6指向7，但都无法使5指向6 。</p>
-<p>5.所以改变函数A的功能，使其功能变为：使结点root1指向结点root2。对于一个结点，对该结点和其左右子结点进行完该函数后，还要加上5指向6这种情况。</p>
-<hr>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">connect</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">connectTowNode</span>(root-&gt;left,root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//连接两个结点</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">connectTowNode</span><span class="params">(Node* node1,Node* node2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node1 == <span class="literal">nullptr</span> || node2 == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//前序遍历</span></span><br><span class="line">        node1-&gt;next = node2;</span><br><span class="line">        <span class="comment">//连接具有相同父结点的两个子树</span></span><br><span class="line">        <span class="built_in">connectTowNode</span>(node1-&gt;left,node1-&gt;right);</span><br><span class="line">        <span class="built_in">connectTowNode</span>(node2-&gt;left,node2-&gt;right);</span><br><span class="line">        <span class="comment">//连接具有不同父结点的两棵子树</span></span><br><span class="line">        <span class="built_in">connectTowNode</span>(node1-&gt;right,node2-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法刷题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【二叉树】226 翻转二叉树</title>
-    <url>/2021/12/31/10-44-49/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/invert-binary-tree/">226 翻转二叉树</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>【该做什么】翻转当前节点的左右子树</p>
-<p>【什么时候做】先翻转当前节点的左右子树，再对以左右子树根节点为根的子树进行相同的操作，即前序遍历。</p>
-<span id="more"></span>
-
-<hr>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//对该结点的操作</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* temp = root-&gt;left;</span><br><span class="line">        root-&gt;left = root-&gt;right;</span><br><span class="line">        root-&gt;right = temp;</span><br><span class="line">        <span class="comment">//左右子树</span></span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h1><p>该题还可用<strong>左右根的后序遍历框架</strong>来解决，即对于一个结点，先让左子树翻转它的子节点，再让右子树翻转它的子节点，最后翻转本结点的左右子树。</p>
-<hr>
-<h1 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        TreeNode* temp = root-&gt;left;</span><br><span class="line">        root-&gt;left = root-&gt;right;</span><br><span class="line">        root-&gt;right = temp;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>提交后发现<strong>采用后序遍历用时更少，内存消耗与前序遍历差不多</strong>。</p>
+<h1>代码</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder, vector&lt;<span class="keyword">int</span>&gt;&amp; postOrder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(inOrder,<span class="number">0</span>,inOrder.<span class="built_in">size</span>() - <span class="number">1</span>,postOrder,<span class="number">0</span>,postOrder.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder,<span class="keyword">int</span> inStart,<span class="keyword">int</span> inEnd,vector&lt;<span class="keyword">int</span>&gt;&amp; postOrder,<span class="keyword">int</span> postStart,<span class="keyword">int</span> postEnd)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(inStart &gt; inEnd)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> value = postOrder[postEnd];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = inStart; i &lt;= inOrder.<span class="built_in">size</span>() - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(value == inOrder[i])&#123;</span><br><span class="line">                index = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(value);</span><br><span class="line">        <span class="keyword">int</span> leftSize = index - inStart;</span><br><span class="line">        root-&gt;left = <span class="built_in">build</span>(inOrder,inStart,index - <span class="number">1</span>,postOrder,postStart,postStart + leftSize - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">build</span>(inOrder,index + <span class="number">1</span>,inEnd,postOrder,postStart + leftSize,postEnd - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1>语法</h1>
+<p>对于一个数组，从第一个元素的下标到最后一个元素的下标是<strong>0 ~ nums.size()  - 1</strong></p>
 ]]></content>
       <categories>
         <category>算法刷题</category>
@@ -95,14 +50,167 @@
       </categories>
   </entry>
   <entry>
+    <title>【二叉树】105 从前序与中序遍历序列构造二叉树</title>
+    <url>/2022/01/03/18-42-15/</url>
+    <content><![CDATA[<h1>题目</h1>
+<p><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">从前序与中序遍历序列构造二叉树</a></p>
+<hr>
+<h1>思路</h1>
+<p><strong>前序遍历从左到右都是根，在中序遍历中这个根的左边的数字是它的左子树，它右边的数字是它的右子树。</strong></p>
+<p>2.构造一棵二叉树，最重要的是确定根节点，然后再用同样的方法得到根的左子树和右子树，这是根左右的前序遍历框架。</p>
+<span id="more"></span>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//preOrder[preStart...preEnd]:前序遍历数组</span></span><br><span class="line"><span class="comment">//inOrder[inStart...inEnd]:中序遍历数组</span></span><br><span class="line"><span class="comment">//返回根节点</span></span><br><span class="line"><span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; preOrder,<span class="keyword">int</span> preStart,<span class="keyword">int</span> preEnd,vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder,<span class="keyword">int</span> inStart,<span class="keyword">int</span> inEnd)</span></span>&#123;</span><br><span class="line">    <span class="comment">//获得根节点的数值</span></span><br><span class="line">    <span class="keyword">int</span> rootVal = preOrder[preStart];</span><br><span class="line">    <span class="comment">//获得根节点在中序遍历数组中的索引位置</span></span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = inStart; i &lt;= inEnd; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(rootVal == inOrder[i])&#123;</span><br><span class="line">            index = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建以rootVal为根节点的树</span></span><br><span class="line">    TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(rootVal);</span><br><span class="line">    <span class="comment">//递归创建左子树和右子树</span></span><br><span class="line">    root-&gt;left = <span class="built_in">build</span>(preOrder,?,?,inOrder,?,?);</span><br><span class="line">    root-&gt;right = <span class="built_in">build</span>(preOrder,?,?,inOrder,?,?);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.确定函数的参数及参数怎么写在这道题中是一个比较难的点。</p>
+<p>（1）都有哪几个参数</p>
+<p>前序遍历数组preOrder，前序遍历数组开始下标preStart，前序遍历数组结束下标preEnd；</p>
+<p>中序遍历数组inOrder，中序遍历数组开始下表inStart，中序遍历数组结束下标inEnd；</p>
+<p>（2）参数如何确定</p>
+<p>对于中序遍历数组中的参数来说比较容易想到，它们分别是inStart ~ index - 1 和 index + 1 ~ inEnd</p>
+<p>对于前序遍历数组中的参数来说需要知道左子树长度才可以进一步确定参数。</p>
+<p>左子树的长度通过index - inStart获得，把它叫做leftSize吧。</p>
+<p>那么前序遍历中的参数就是preStart + 1 ~ preStart + leftSize 和 preStart + leftSize + 1 ~ preEnd</p>
+<hr>
+<h1>代码</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; preorder, vector&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(preorder,<span class="number">0</span>,preorder.<span class="built_in">size</span>() - <span class="number">1</span>,inorder,<span class="number">0</span>,inorder.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//preOrder[preStart...preEnd]:前序遍历数组</span></span><br><span class="line">    <span class="comment">//inOrder[inStart...inEnd]:中序遍历数组</span></span><br><span class="line">    <span class="comment">//返回根节点</span></span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; preOrder,<span class="keyword">int</span> preStart,<span class="keyword">int</span> preEnd,vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder,<span class="keyword">int</span> inStart,<span class="keyword">int</span> inEnd)</span></span>&#123;</span><br><span class="line">        <span class="comment">//如果起始索引大于结束索引则返回空</span></span><br><span class="line">        <span class="keyword">if</span>(preStart &gt; preEnd)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//获得根节点的数值</span></span><br><span class="line">        <span class="keyword">int</span> rootVal = preOrder[preStart];</span><br><span class="line">        <span class="comment">//获得根节点在中序遍历数组中的索引位置</span></span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = inStart; i &lt;= inEnd; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(rootVal == inOrder[i])&#123;</span><br><span class="line">                index = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//得到左子树的长度</span></span><br><span class="line">        <span class="keyword">int</span> leftSize = index - inStart;</span><br><span class="line">        <span class="comment">//创建以rootVal为根节点的树</span></span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(rootVal);</span><br><span class="line">        <span class="comment">//递归创建左子树和右子树</span></span><br><span class="line">        root-&gt;left = <span class="built_in">build</span>(preOrder,preStart + <span class="number">1</span>,preStart + leftSize,inOrder,inStart,index - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">build</span>(preOrder,preStart + leftSize + <span class="number">1</span>,preEnd,inOrder,index + <span class="number">1</span>,inEnd);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【二叉树】116 填充每个结点的下一个右侧结点指针</title>
+    <url>/2021/12/31/23-25-30/</url>
+    <content><![CDATA[<h1>题目</h1>
+<p><a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/">116 填充每个结点的下一个右侧结点指针</a></p>
+<hr>
+<h1>思路</h1>
+<p>1.题目的要求：使每个结点的指针指向它右侧的结点。</p>
+<p>2.对于每一个结点要做的事情：让其左子树的根结点指向右子树的根结点。举例：对于1来说，是让2指向3 。</p>
+<span id="more"></span>
+<p>所以写一个函数A，其功能是让其左子树的根结点指向右子树的根结点。</p>
+<p>3.对于一个结点，先对该结点进行“让其左子树的根结点指向右子树的根结点”功能，再对其左右子树做同样的操作，这是<strong>根左右的前序遍历框架</strong>。</p>
+<p>4.但是依照上述操作不会使5指向6，因为对2进行该函数可以使4指向5，对3进行该函数可以使6指向7，但都无法使5指向6 。</p>
+<p>5.所以改变函数A的功能，使其功能变为：使结点root1指向结点root2。对于一个结点，对该结点和其左右子结点进行完该函数后，还要加上5指向6这种情况。</p>
+<hr>
+<h1>代码</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">connect</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">connectTowNode</span>(root-&gt;left,root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//连接两个结点</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">connectTowNode</span><span class="params">(Node* node1,Node* node2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node1 == <span class="literal">nullptr</span> || node2 == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//前序遍历</span></span><br><span class="line">        node1-&gt;next = node2;</span><br><span class="line">        <span class="comment">//连接具有相同父结点的两个子树</span></span><br><span class="line">        <span class="built_in">connectTowNode</span>(node1-&gt;left,node1-&gt;right);</span><br><span class="line">        <span class="built_in">connectTowNode</span>(node2-&gt;left,node2-&gt;right);</span><br><span class="line">        <span class="comment">//连接具有不同父结点的两棵子树</span></span><br><span class="line">        <span class="built_in">connectTowNode</span>(node1-&gt;right,node2-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【二叉树】114 二叉树展开为链表</title>
+    <url>/2022/01/01/12-57-01/</url>
+    <content><![CDATA[<h1>题目</h1>
+<p><a href="https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/">114 二叉树展开为链表</a></p>
+<hr>
+<h1>思路</h1>
+<p><strong>1.将二叉树展开成链表是怎么一个过程</strong></p>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以形如此的二叉树A为例：</span><br><span class="line">         1     </span><br><span class="line">        / \</span><br><span class="line">       2   5</span><br><span class="line">二叉树A转换成链表的过程是：</span><br><span class="line">         1             1</span><br><span class="line">        / \  -----&gt;     \</span><br><span class="line">       2   5             2</span><br><span class="line">                          \</span><br><span class="line">                           5</span><br></pre></td></tr></table></figure>
+<p><strong>2.定义函数flatten的功能</strong></p>
+<p>函数flatten的功能是把一棵二叉树展开成一个链表</p>
+<p><strong>3.运用框架</strong></p>
+<p>对于一个节点，把它的左子树展开成一个链表，再把它的右子树展开成一个链表，最后再对以该节点为根节点的树展开成链表。<strong>这是左右根的后序遍历框架。</strong></p>
+<p><strong>4.例子</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    1              1               1</span><br><span class="line">   / \            / \               \</span><br><span class="line">  2   3  ----&gt;   2   3  ----&gt;        2</span><br><span class="line"> / \ / \          \   \               \</span><br><span class="line">4  5 6  7          4   6               4</span><br><span class="line">                    \   \               \</span><br><span class="line">                     5   7               5</span><br><span class="line">                                          \</span><br><span class="line">                                           3</span><br><span class="line">                                            \</span><br><span class="line">                                             6</span><br><span class="line">                                              \</span><br><span class="line">                                               7</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>代码</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">flatten</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">flatten</span>(root-&gt;left);  <span class="comment">//把左子树展开成链表</span></span><br><span class="line">        <span class="built_in">flatten</span>(root-&gt;right); <span class="comment">//把右子树展开成链表</span></span><br><span class="line">        <span class="comment">//记录下根的左右子树（左右子树均已展开成链表）</span></span><br><span class="line">        TreeNode* left = root-&gt;left;</span><br><span class="line">        TreeNode* right = root-&gt;right;</span><br><span class="line">        <span class="comment">//对根节点进行操作</span></span><br><span class="line">        <span class="comment">//1.将左子树接到右子树的位置</span></span><br><span class="line">        root-&gt;left = <span class="literal">nullptr</span>;</span><br><span class="line">        root-&gt;right = left;</span><br><span class="line">        <span class="comment">//2.将原来的右子树接到现在的右子树下边</span></span><br><span class="line">        TreeNode* node = root;</span><br><span class="line">        <span class="keyword">while</span>(node-&gt;right != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            node = node-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        node-&gt;right = right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【二叉树】297 二叉树的序列化与反序列化</title>
+    <url>/2022/01/08/00-27-02/</url>
+    <content><![CDATA[<h1>题目</h1>
+<p><a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/">297 二叉树的序列化与反序列化</a></p>
+<h1>思路</h1>
+<p><strong>什么是序列化和反序列化</strong></p>
+<p>二叉树的序列化就是把二叉树转变成字符串，反序列化就是一个字符串变成一棵树。</p>
+<span id="more"></span>
+<p><strong>具体思路</strong></p>
+<p><strong>1.序列化</strong></p>
+<p>树的样子：</p>
+<img align = "center" src = "https://cdn.jsdelivr.net/gh/winterwintersweet/image/202201072306875.jpg" width = "220" height = "160">
+<p>按照前序遍历的方法序列化得到的字符串的样子：1,2,null,null,3,4,null,null,5,null,null</p>
+<p><strong>问题：设计什么样的辅助函数</strong></p>
+<p>辅助函数的功能是把二叉树变成一个字符串，参数有树和字符串，采用前序遍历的方式，递归结束的条件是树的结点为空。</p>
+<p><strong>2.反序列化</strong></p>
+<p>字符串：1,2,null,null,3,4,null,null,5,null,null</p>
+<p>按照前序遍历的方法得到的树也是上图。</p>
+<p>要设置一个辅助函数将字符串变成树。</p>
+<p><strong>问题：字符串中的单个字符不好处理，怎么才能更方便的遍历字符串中的每一个结点呢？</strong></p>
+<p>但是字符串中一个个单个的字符不好处理，要先把字符串拆成单个的字符串存到一个字符串数组中，再通过通过前序遍历的方法得到一颗树。</p>
+<p><strong>问题：只有前序遍历的字符串，能得到二叉树吗?</strong></p>
+<p>能得到，因为这个字符串中包含空结点的信息。</p>
+<p><strong>问题：辅助函数设计成什么样？</strong></p>
+<p>功能是把字符串数组中的内容存到二叉树中，参数就是字符串数组，采用的是前序遍历的方式，递归结束的标志是数组为空。</p>
+<h1>代码</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Codec</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*主函数：将二叉树序列化为字符串*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">serialize</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        StringBuilder string = <span class="keyword">new</span> StringBuilder();  <span class="comment">//[1]</span></span><br><span class="line">        build(root,string);</span><br><span class="line">        String str = string.toString();  <span class="comment">//[2]</span></span><br><span class="line">        str = str.substring(<span class="number">0</span>,str.length() -<span class="number">1</span>);  <span class="comment">//[3]substring的作用</span></span><br><span class="line">        <span class="keyword">return</span> str.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*辅助函数：将二叉树存到string中*/</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(TreeNode root,StringBuilder string)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            string.append(<span class="string">&quot;null&quot;</span>).append(<span class="string">&quot;,&quot;</span>); </span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        string.append(root.val).append(<span class="string">&quot;,&quot;</span>);  <span class="comment">//[5]这里append可以自动把数字转为字符串</span></span><br><span class="line">        build(root.left,string);</span><br><span class="line">        build(root.right,string);       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*主函数：将字符串反序列化成一棵二叉树*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">deserialize</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;String&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String s : data.split(<span class="string">&quot;,&quot;</span>))&#123;  <span class="comment">//[6]sqlit的作用,循环的使用</span></span><br><span class="line">            list.addLast(s);  <span class="comment">//[7]</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> deFind(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*辅助函数：把list中的内容存到二叉树中*/</span></span><br><span class="line">    <span class="function">TreeNode <span class="title">deFind</span><span class="params">(LinkedList&lt;String&gt; list)</span></span>&#123;  <span class="comment">//[8]注意括号里的写法</span></span><br><span class="line">        <span class="keyword">if</span>(list.isEmpty())&#123;  <span class="comment">//[9]判空，结束条件</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String string = list.removeFirst();  <span class="comment">//[10]removeFirst功能</span></span><br><span class="line">        <span class="keyword">if</span>(string.equals(<span class="string">&quot;null&quot;</span>))&#123;  <span class="comment">//[11]</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(Integer.parseInt(string));  <span class="comment">//[12]字符串变数字</span></span><br><span class="line">        root.left = deFind(list);</span><br><span class="line">        root.right = deFind(list);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>语法上的一些细节</h1>
+<p><strong>1.<code>StringBuiler</code></strong></p>
+<p>[1]什么时候用<code>StringBuilder</code>而不是用<code>String</code>呢？</p>
+<p>当需要用许多小段的字符串来构建一个大的字符串时使用StringBuilder，因为如果使用字符串拼接的方法效率比较低，每次拼接字符串时都会构建一个新的<code>String</code>对象，既耗时，又费空间。</p>
+<p><code>StringBuilder append(String str)</code>和<code>StringBuilder append(Char c)</code>方法就能非常轻松地在字符串末尾追加字符串或字符。</p>
+<p>[2]<code>StringBuilder</code>还有一个方法是<code>String toString()</code>，其功能是返回一个与构建器或缓冲器内容相同的字符串。</p>
+<p><strong>2.String</strong></p>
+<p>[3]<code>String substring(int beginIndex)</code>:返回从beginIndex到末尾的所以字符</p>
+<p><code>String substring(int beginIndex,int endIndex)</code>:返回从beginIndex到endIndex - 1的所有字符</p>
+<p>[6]data.split(“,”)的功能：将data这个字符串按照 ”,“ 分开，分成好多个小字符串存到一个字符串数组中。</p>
+<p><strong>[11]检测字符串相等为什么用equals方法而不是==？</strong></p>
+<p>==只能够确定两个字符串是否在同一位置，当然在同一位置的字符串肯定是相等的，但是不在同一位置的字符串也有可能相等。</p>
+<p>[12]字符串变数字Integer.parseInt(string)</p>
+<p><strong>3.for each循环，也叫增强for循环</strong></p>
+<p>[6]例子：for(int element : a) 其中a是个数组，前面是一个存储数组中元素的一个变量。整个语句读作循环a中的每一个元素</p>
+<p>适用于处理一个集合中的所有元素，因为这样根本不需要考虑下标的起始值和终止值。</p>
+<p><strong>4.LinkedList&lt;&gt;</strong></p>
+<p>[7] void addLast(E element)：将某个元素添加到列表的尾部。</p>
+<p>[8]如果是一个集合作函数的参数，尖括号中的内容被忘了写<code>TreeNode deFind(LinkedList&lt;String&gt; list)</code></p>
+<p>[9]链表判空 isEmpty()</p>
+<p>[10]E removeFirst() : 删除并返回链表的首元素</p>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【二叉树】226 翻转二叉树</title>
+    <url>/2021/12/31/10-44-49/</url>
+    <content><![CDATA[<h1>题目</h1>
+<p><a href="https://leetcode-cn.com/problems/invert-binary-tree/">226 翻转二叉树</a></p>
+<h1>思路</h1>
+<p>【该做什么】翻转当前节点的左右子树</p>
+<p>【什么时候做】先翻转当前节点的左右子树，再对以左右子树根节点为根的子树进行相同的操作，即前序遍历。</p>
+<span id="more"></span>
+<hr>
+<h1>代码</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//对该结点的操作</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* temp = root-&gt;left;</span><br><span class="line">        root-&gt;left = root-&gt;right;</span><br><span class="line">        root-&gt;right = temp;</span><br><span class="line">        <span class="comment">//左右子树</span></span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>其他解法</h1>
+<p>该题还可用<strong>左右根的后序遍历框架</strong>来解决，即对于一个结点，先让左子树翻转它的子节点，再让右子树翻转它的子节点，最后翻转本结点的左右子树。</p>
+<hr>
+<h1>代码</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        <span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        TreeNode* temp = root-&gt;left;</span><br><span class="line">        root-&gt;left = root-&gt;right;</span><br><span class="line">        root-&gt;right = temp;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>提交后发现<strong>采用后序遍历用时更少，内存消耗与前序遍历差不多</strong>。</p>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【二叉树】654 最大二叉树</title>
     <url>/2022/01/02/22-28-21/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/maximum-binary-tree/">654 最大二叉树</a></p>
+    <content><![CDATA[<h1>题目</h1>
+<p><a href="https://leetcode-cn.com/problems/maximum-binary-tree/">654 最大二叉树</a></p>
 <hr>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p><strong>1.结合例子理解最大二叉树的定义（以nums = [3,2,1,6,0,5]为例）</strong></p>
+<h1>思路</h1>
+<p><strong>1.结合例子理解最大二叉树的定义（以nums = [3,2,1,6,0,5]为例）</strong></p>
 <p>二叉树的根是数组nums中的最大元素，即6。6左边的数字[3,2,1]全在6的左子树中出现。6右边的数字[0,5]全在6的右子树中出现。</p>
 <span id="more"></span>
-
 <p>[3,2,1]中再找最大的构成根节点，它左边的在左子树中出现，它右边的在右子树中出现。</p>
 <p>[0,5]中再找最大的构成根节点，它左边的在左子树中出现，它右边的在右子树中出现。</p>
 <p><strong>2.明确根节点该做的事</strong></p>
@@ -110,13 +218,70 @@
 <p><strong>3.套用框架</strong></p>
 <p>使根节点等于最大值，再使其左子树的根节点称为最大值，右子树的根节点成为最大值。这是<strong>根左右的前序遍历框架</strong></p>
 <hr>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">constructMaximumBinaryTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(nums,<span class="number">0</span>,nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给定nums[low...high],构造最大二叉树</span></span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">        <span class="comment">/***根节点要做的事：找出最大的元素构建一个结点***/</span></span><br><span class="line">        <span class="keyword">if</span>(low &gt; high)&#123;  <span class="comment">//注意只有大于的时候才能换，如果是等于的时候那么说明是有一个元素的，不能返回空。</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = low; i &lt;= high; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(max &lt; nums[i])&#123;</span><br><span class="line">                max = nums[i];</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(max);</span><br><span class="line">        <span class="comment">//对最大值左右的元素做相同的操作构造根节点的左右子树</span></span><br><span class="line">        root-&gt;left = <span class="built_in">build</span>(nums,low,index - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">build</span>(nums,index + <span class="number">1</span>,high);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<h1>代码</h1>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">constructMaximumBinaryTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(nums,<span class="number">0</span>,nums.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给定nums[low...high],构造最大二叉树</span></span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">        <span class="comment">/***根节点要做的事：找出最大的元素构建一个结点***/</span></span><br><span class="line">        <span class="keyword">if</span>(low &gt; high)&#123;  <span class="comment">//注意只有大于的时候才能换，如果是等于的时候那么说明是有一个元素的，不能返回空。</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = low; i &lt;= high; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(max &lt; nums[i])&#123;</span><br><span class="line">                max = nums[i];</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(max);</span><br><span class="line">        <span class="comment">//对最大值左右的元素做相同的操作构造根节点的左右子树</span></span><br><span class="line">        root-&gt;left = <span class="built_in">build</span>(nums,low,index - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">build</span>(nums,index + <span class="number">1</span>,high);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>1.数组元素的大小：<code>nums.size()</code></p>
+<h1>语法</h1>
+<p>1.数组元素的大小：<code>nums.size()</code></p>
 ]]></content>
       <categories>
         <category>算法刷题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【二叉树】652 寻找重复的子树</title>
+    <url>/2022/01/05/23-35-48/</url>
+    <content><![CDATA[<h1>题目</h1>
+<p><a href="https://leetcode-cn.com/problems/find-duplicate-subtrees/">652 寻找重复的子树</a></p>
+<h1>思路</h1>
+<p><strong>1.整体思路</strong>：找到以每个结点为根的子树长什么样子，然后找出其中相同的。</p>
+<span id="more"></span>
+<p><strong>2.如何找到以每个结点为根的子树长什么样子？</strong></p>
+<p>对每个子树进行遍历形成遍历序列，如果是空则用“#”代替</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">String <span class="title">subTitle</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;#&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String left = find(root.left);</span><br><span class="line">    String right = find(root.right);</span><br><span class="line">    String subTree = left + <span class="string">&quot;,&quot;</span> + right + <span class="string">&quot;,&quot;</span> + root.val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3.如何找出其中相同的？</strong></p>
+<p>利用HashMap存储子树序列与对应的该子树序列的个数，用LinkedList存储具有相同结构的子树的根节点</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> time = map.getOrDefault(subTree,<span class="number">0</span>);  <span class="comment">//获得subTree对应的值，如果map中还没有subTree，那么返回的是0</span></span><br><span class="line"><span class="keyword">if</span>(time == <span class="number">1</span>)&#123;</span><br><span class="line">       list.add(root);</span><br><span class="line">&#125;</span><br><span class="line">map.put(subTree,time + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h1>代码</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*存储以每个结点为根的树的序列和对应的个数*/</span></span><br><span class="line">    HashMap&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">/*存储具有相同结构的子树的根结点*/</span></span><br><span class="line">    LinkedList&lt;TreeNode&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="comment">/*主函数*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">findDuplicateSubtrees</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        find(root);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**找具有相同结构的子树，并把根节点放到list集合中 */</span></span><br><span class="line">    <span class="function">String <span class="title">find</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;#&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String left = find(root.left);</span><br><span class="line">        String right = find(root.right);</span><br><span class="line">        String subTree = left + <span class="string">&quot;,&quot;</span> + right + <span class="string">&quot;,&quot;</span> + root.val;</span><br><span class="line">        <span class="keyword">int</span> time = map.getOrDefault(subTree,<span class="number">0</span>);  <span class="comment">//获得subTree对应的值，如果map中还没有subTree，那么返回的是0</span></span><br><span class="line">        <span class="keyword">if</span>(time == <span class="number">1</span>)&#123;</span><br><span class="line">            list.add(root);</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(subTree,time + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> subTree;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《弃猫》</title>
+    <url>/2022/01/07/15-35-07/</url>
+    <content><![CDATA[<p><strong>书名</strong>：《弃猫》<br>
+<strong>出版社</strong>：花城出版社<br>
+<strong>作者</strong>：村上春树</p>
+<span id="more"></span>
+<img align = "center" src = "https://cdn.jsdelivr.net/gh/winterwintersweet/image/202201061617406.jpg" width = "270" height = "400">
+<p align = "center"> <font size = "2"> 《弃猫》</font></p>
+<h5 id="花城出版社还有哪些好书吗？">花城出版社还有哪些好书吗？</h5>
+<p>《这边风景》《出梁庄记》《平原客》《遥远的向日葵地》《下弦月》《乙卯年雨雪》</p>
+<p>《遥远的向日葵地》是李娟的作品，不错不错！👍</p>
+<h5 id="这本书讲了什么？">这本书讲了什么？</h5>
+<p>村上春树通过回忆和考证父亲的过去渐渐增加了对他的了解，同时也通过这种追忆探讨了偶然与必然之下的命运，对待历史的态度以及战争对人们命运的影响，总之，我觉得这本书在探讨的核心话题是<strong>命运</strong>。</p>
+<h5 id="弃猫是什么意思？">弃猫是什么意思？</h5>
+<p>弃猫就是被丢弃的猫，村上春树以“他和父亲去海边丢弃一只猫”这件事为开头写了这本书，故事的细节是这样的：父亲和他去海边丢弃一只猫，然后刚回到家却发现猫抢到二人前头先回了家。</p>
+<blockquote>
+<p>我还记得父亲那时一脸的惊讶。但他神情中的惊讶不久就转为叹服，最后好像还松了口气。</p>
+</blockquote>
+<p>丢猫这件事其实和父亲幼时的命运是暗合的，那时不少孩子多的家庭会把长子之外的孩子送给别家做养子或送到寺院当小和尚，父亲是家中的次子，曾被送到奈良的某座寺院，但似乎是因为父亲难以适应新的环境，就又被送回了老家，当父亲看到一只被自己丢弃的小猫竟然赶在自己前头回到了家，也会联想到自己幼时的命运吧？“叹服”和“松了口气”也就可以理解了。</p>
+<h5 id="站谁一边？替谁说话？">站谁一边？替谁说话？</h5>
+<p>村上春树在回忆父亲侵华战争时这样写到：</p>
+<blockquote>
+<p>一支连机械化都未完全实现，也难以指望燃料充足补给的战斗部队——马几乎是唯一的代步工具——要走这么远的路，一定是一趟异常艰难的苦行。（后略）</p>
+</blockquote>
+<p>侵华日军给中国人民带来了极其沉重的苦难，这里村上春树以作为军人身份的父亲的儿子的视角写日军行军困难，虽然表面上陈述事实，但我觉得连无可厚非都说不上，因为侵华的行为本身就是错误的。我想起了政治课上老师讲过的立场问题，所谓立场问题，就是站在谁这一边，为谁说话的问题，身为中国人，当然要站在中国人民这一方，为中国人民说话。</p>
+<h5 id="金句与观点">金句与观点</h5>
+<blockquote>
+<p>最终，我们每一个人不过是把这份偶然当成独一无二来生活罢了。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>书籍</category>
       </categories>
   </entry>
   <entry>
@@ -198,166 +363,6 @@
 ]]></content>
       <categories>
         <category>书籍</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【二叉树】105 从前序与中序遍历序列构造二叉树</title>
-    <url>/2022/01/03/18-42-15/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">从前序与中序遍历序列构造二叉树</a></p>
-<hr>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p><strong>前序遍历从左到右都是根，在中序遍历中这个根的左边的数字是它的左子树，它右边的数字是它的右子树。</strong></p>
-<p>2.构造一棵二叉树，最重要的是确定根节点，然后再用同样的方法得到根的左子树和右子树，这是根左右的前序遍历框架。</p>
-<span id="more"></span>
-
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//preOrder[preStart...preEnd]:前序遍历数组</span></span><br><span class="line"><span class="comment">//inOrder[inStart...inEnd]:中序遍历数组</span></span><br><span class="line"><span class="comment">//返回根节点</span></span><br><span class="line"><span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; preOrder,<span class="keyword">int</span> preStart,<span class="keyword">int</span> preEnd,vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder,<span class="keyword">int</span> inStart,<span class="keyword">int</span> inEnd)</span></span>&#123;</span><br><span class="line">    <span class="comment">//获得根节点的数值</span></span><br><span class="line">    <span class="keyword">int</span> rootVal = preOrder[preStart];</span><br><span class="line">    <span class="comment">//获得根节点在中序遍历数组中的索引位置</span></span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = inStart; i &lt;= inEnd; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(rootVal == inOrder[i])&#123;</span><br><span class="line">            index = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建以rootVal为根节点的树</span></span><br><span class="line">    TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(rootVal);</span><br><span class="line">    <span class="comment">//递归创建左子树和右子树</span></span><br><span class="line">    root-&gt;left = <span class="built_in">build</span>(preOrder,?,?,inOrder,?,?);</span><br><span class="line">    root-&gt;right = <span class="built_in">build</span>(preOrder,?,?,inOrder,?,?);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.确定函数的参数及参数怎么写在这道题中是一个比较难的点。</p>
-<p>（1）都有哪几个参数</p>
-<p>前序遍历数组preOrder，前序遍历数组开始下标preStart，前序遍历数组结束下标preEnd；</p>
-<p>中序遍历数组inOrder，中序遍历数组开始下表inStart，中序遍历数组结束下标inEnd；</p>
-<p>（2）参数如何确定</p>
-<p>对于中序遍历数组中的参数来说比较容易想到，它们分别是inStart ~ index - 1 和 index + 1 ~ inEnd</p>
-<p>对于前序遍历数组中的参数来说需要知道左子树长度才可以进一步确定参数。</p>
-<p>左子树的长度通过index - inStart获得，把它叫做leftSize吧。</p>
-<p>那么前序遍历中的参数就是preStart + 1 ~ preStart + leftSize 和 preStart + leftSize + 1 ~ preEnd</p>
-<hr>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; preorder, vector&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(preorder,<span class="number">0</span>,preorder.<span class="built_in">size</span>() - <span class="number">1</span>,inorder,<span class="number">0</span>,inorder.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//preOrder[preStart...preEnd]:前序遍历数组</span></span><br><span class="line">    <span class="comment">//inOrder[inStart...inEnd]:中序遍历数组</span></span><br><span class="line">    <span class="comment">//返回根节点</span></span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; preOrder,<span class="keyword">int</span> preStart,<span class="keyword">int</span> preEnd,vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder,<span class="keyword">int</span> inStart,<span class="keyword">int</span> inEnd)</span></span>&#123;</span><br><span class="line">        <span class="comment">//如果起始索引大于结束索引则返回空</span></span><br><span class="line">        <span class="keyword">if</span>(preStart &gt; preEnd)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//获得根节点的数值</span></span><br><span class="line">        <span class="keyword">int</span> rootVal = preOrder[preStart];</span><br><span class="line">        <span class="comment">//获得根节点在中序遍历数组中的索引位置</span></span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = inStart; i &lt;= inEnd; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(rootVal == inOrder[i])&#123;</span><br><span class="line">                index = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//得到左子树的长度</span></span><br><span class="line">        <span class="keyword">int</span> leftSize = index - inStart;</span><br><span class="line">        <span class="comment">//创建以rootVal为根节点的树</span></span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(rootVal);</span><br><span class="line">        <span class="comment">//递归创建左子树和右子树</span></span><br><span class="line">        root-&gt;left = <span class="built_in">build</span>(preOrder,preStart + <span class="number">1</span>,preStart + leftSize,inOrder,inStart,index - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">build</span>(preOrder,preStart + leftSize + <span class="number">1</span>,preEnd,inOrder,index + <span class="number">1</span>,inEnd);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>算法刷题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【二叉树】106 从中序遍历和后序遍历构造二叉树</title>
-    <url>/2022/01/04/22-24-52/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/">106 从中序遍历和后序遍历构造二叉树</a></p>
-<hr>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>本题思路与<a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">从前序与中序遍历序列构造二叉树</a>类似，唯一需要思考的地方是创建左右子树的时候参数是什么。</p>
-<span id="more"></span>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以此树为例</span><br><span class="line">      1</span><br><span class="line">     / \</span><br><span class="line">    2   3</span><br><span class="line">   / \ / \</span><br><span class="line">  5  4 8  9</span><br><span class="line">    / \</span><br><span class="line">   6   7</span><br></pre></td></tr></table></figure>
-
-<p>中序遍历结果：26471839</p>
-<p>后序遍历结果：67428931</p>
-<hr>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder, vector&lt;<span class="keyword">int</span>&gt;&amp; postOrder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(inOrder,<span class="number">0</span>,inOrder.<span class="built_in">size</span>() - <span class="number">1</span>,postOrder,<span class="number">0</span>,postOrder.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; inOrder,<span class="keyword">int</span> inStart,<span class="keyword">int</span> inEnd,vector&lt;<span class="keyword">int</span>&gt;&amp; postOrder,<span class="keyword">int</span> postStart,<span class="keyword">int</span> postEnd)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(inStart &gt; inEnd)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> value = postOrder[postEnd];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = inStart; i &lt;= inOrder.<span class="built_in">size</span>() - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(value == inOrder[i])&#123;</span><br><span class="line">                index = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(value);</span><br><span class="line">        <span class="keyword">int</span> leftSize = index - inStart;</span><br><span class="line">        root-&gt;left = <span class="built_in">build</span>(inOrder,inStart,index - <span class="number">1</span>,postOrder,postStart,postStart + leftSize - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">build</span>(inOrder,index + <span class="number">1</span>,inEnd,postOrder,postStart + leftSize,postEnd - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>对于一个数组，从第一个元素的下标到最后一个元素的下标是<strong>0 ~ nums.size()  - 1</strong></p>
-]]></content>
-      <categories>
-        <category>算法刷题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【二叉树】652 寻找重复的子树</title>
-    <url>/2022/01/05/23-35-48/</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/find-duplicate-subtrees/">652 寻找重复的子树</a></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p><strong>1.整体思路</strong>：找到以每个结点为根的子树长什么样子，然后找出其中相同的。</p>
-<span id="more"></span>
-
-<p><strong>2.如何找到以每个结点为根的子树长什么样子？</strong></p>
-<p>对每个子树进行遍历形成遍历序列，如果是空则用“#”代替</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">String <span class="title">subTitle</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;#&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String left = find(root.left);</span><br><span class="line">    String right = find(root.right);</span><br><span class="line">    String subTree = left + <span class="string">&quot;,&quot;</span> + right + <span class="string">&quot;,&quot;</span> + root.val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>3.如何找出其中相同的？</strong></p>
-<p>利用HashMap存储子树序列与对应的该子树序列的个数，用LinkedList存储具有相同结构的子树的根节点</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> time = map.getOrDefault(subTree,<span class="number">0</span>);  <span class="comment">//获得subTree对应的值，如果map中还没有subTree，那么返回的是0</span></span><br><span class="line"><span class="keyword">if</span>(time == <span class="number">1</span>)&#123;</span><br><span class="line">       list.add(root);</span><br><span class="line">&#125;</span><br><span class="line">map.put(subTree,time + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*存储以每个结点为根的树的序列和对应的个数*/</span></span><br><span class="line">    HashMap&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">/*存储具有相同结构的子树的根结点*/</span></span><br><span class="line">    LinkedList&lt;TreeNode&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="comment">/*主函数*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">findDuplicateSubtrees</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        find(root);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**找具有相同结构的子树，并把根节点放到list集合中 */</span></span><br><span class="line">    <span class="function">String <span class="title">find</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;#&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String left = find(root.left);</span><br><span class="line">        String right = find(root.right);</span><br><span class="line">        String subTree = left + <span class="string">&quot;,&quot;</span> + right + <span class="string">&quot;,&quot;</span> + root.val;</span><br><span class="line">        <span class="keyword">int</span> time = map.getOrDefault(subTree,<span class="number">0</span>);  <span class="comment">//获得subTree对应的值，如果map中还没有subTree，那么返回的是0</span></span><br><span class="line">        <span class="keyword">if</span>(time == <span class="number">1</span>)&#123;</span><br><span class="line">            list.add(root);</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(subTree,time + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> subTree;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>算法刷题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《弃猫》</title>
-    <url>/2022/01/07/15-35-07/</url>
-    <content><![CDATA[<p><strong>书名</strong>：《弃猫》<br>
-<strong>出版社</strong>：花城出版社<br>
-<strong>作者</strong>：村上春树</p>
-<span id="more"></span>
-<img align = "center" src = "https://cdn.jsdelivr.net/gh/winterwintersweet/image/202201061617406.jpg" width = "270" height = "400">
-<p align = "center"> <font size = "2"> 《弃猫》</font></p>
-<h5 id="花城出版社还有哪些好书吗？">花城出版社还有哪些好书吗？</h5>
-<p>《这边风景》《出梁庄记》《平原客》《遥远的向日葵地》《下弦月》《乙卯年雨雪》</p>
-<p>《遥远的向日葵地》是李娟的作品，不错不错！👍</p>
-<h5 id="这本书讲了什么？">这本书讲了什么？</h5>
-<p>村上春树通过回忆和考证父亲的过去渐渐增加了对他的了解，同时也通过这种追忆探讨了偶然与必然之下的命运，对待历史的态度以及战争对人们命运的影响，总之，我觉得这本书在探讨的核心话题是<strong>命运</strong>。</p>
-<h5 id="弃猫是什么意思？">弃猫是什么意思？</h5>
-<p>弃猫就是被丢弃的猫，村上春树以“他和父亲去海边丢弃一只猫”这件事为开头写了这本书，故事的细节是这样的：父亲和他去海边丢弃一只猫，然后刚回到家却发现猫抢到二人前头先回了家。</p>
-<blockquote>
-<p>我还记得父亲那时一脸的惊讶。但他神情中的惊讶不久就转为叹服，最后好像还松了口气。</p>
-</blockquote>
-<p>丢猫这件事其实和父亲幼时的命运是暗合的，那时不少孩子多的家庭会把长子之外的孩子送给别家做养子或送到寺院当小和尚，父亲是家中的次子，曾被送到奈良的某座寺院，但似乎是因为父亲难以适应新的环境，就又被送回了老家，当父亲看到一只被自己丢弃的小猫竟然赶在自己前头回到了家，也会联想到自己幼时的命运吧？“叹服”和“松了口气”也就可以理解了。</p>
-<h5 id="站谁一边？替谁说话？">站谁一边？替谁说话？</h5>
-<p>村上春树在回忆父亲侵华战争时这样写到：</p>
-<blockquote>
-<p>一支连机械化都未完全实现，也难以指望燃料充足补给的战斗部队——马几乎是唯一的代步工具——要走这么远的路，一定是一趟异常艰难的苦行。（后略）</p>
-</blockquote>
-<p>侵华日军给中国人民带来了极其沉重的苦难，这里村上春树以作为军人身份的父亲的儿子的视角写日军行军困难，虽然表面上陈述事实，但我觉得连无可厚非都说不上，因为侵华的行为本身就是错误的。我想起了政治课上老师讲过的立场问题，所谓立场问题，就是站在谁这一边，为谁说话的问题，身为中国人，当然要站在中国人民这一方，为中国人民说话。</p>
-<h5 id="金句与观点">金句与观点</h5>
-<blockquote>
-<p>最终，我们每一个人不过是把这份偶然当成独一无二来生活罢了。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>书籍</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【二叉树】297 二叉树的序列化与反序列化</title>
-    <url>/2022/01/08/00-27-02/</url>
-    <content><![CDATA[<h1>题目</h1>
-<p><a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/">297 二叉树的序列化与反序列化</a></p>
-<h1>思路</h1>
-<p><strong>什么是序列化和反序列化</strong></p>
-<p>二叉树的序列化就是把二叉树转变成字符串，反序列化就是一个字符串变成一棵树。</p>
-<span id="more"></span>
-<p><strong>具体思路</strong></p>
-<p><strong>1.序列化</strong></p>
-<p>树的样子：</p>
-<img align = "center" src = "https://cdn.jsdelivr.net/gh/winterwintersweet/image/202201072306875.jpg" width = "220" height = "160">
-<p>按照前序遍历的方法序列化得到的字符串的样子：1,2,null,null,3,4,null,null,5,null,null</p>
-<p><strong>问题：设计什么样的辅助函数</strong></p>
-<p>辅助函数的功能是把二叉树变成一个字符串，参数有树和字符串，采用前序遍历的方式，递归结束的条件是树的结点为空。</p>
-<p><strong>2.反序列化</strong></p>
-<p>字符串：1,2,null,null,3,4,null,null,5,null,null</p>
-<p>按照前序遍历的方法得到的树也是上图。</p>
-<p>要设置一个辅助函数将字符串变成树。</p>
-<p><strong>问题：字符串中的单个字符不好处理，怎么才能更方便的遍历字符串中的每一个结点呢？</strong></p>
-<p>但是字符串中一个个单个的字符不好处理，要先把字符串拆成单个的字符串存到一个字符串数组中，再通过通过前序遍历的方法得到一颗树。</p>
-<p><strong>问题：只有前序遍历的字符串，能得到二叉树吗?</strong></p>
-<p>能得到，因为这个字符串中包含空结点的信息。</p>
-<p><strong>问题：辅助函数设计成什么样？</strong></p>
-<p>功能是把字符串数组中的内容存到二叉树中，参数就是字符串数组，采用的是前序遍历的方式，递归结束的标志是数组为空。</p>
-<h1>代码</h1>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Codec</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*主函数：将二叉树序列化为字符串*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">serialize</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        StringBuilder string = <span class="keyword">new</span> StringBuilder();  <span class="comment">//[1]</span></span><br><span class="line">        build(root,string);</span><br><span class="line">        String str = string.toString();  <span class="comment">//[2]</span></span><br><span class="line">        str = str.substring(<span class="number">0</span>,str.length() -<span class="number">1</span>);  <span class="comment">//[3]substring的作用</span></span><br><span class="line">        <span class="keyword">return</span> str.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*辅助函数：将二叉树存到string中*/</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(TreeNode root,StringBuilder string)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            string.append(<span class="string">&quot;null&quot;</span>).append(<span class="string">&quot;,&quot;</span>); </span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        string.append(root.val).append(<span class="string">&quot;,&quot;</span>);  <span class="comment">//[5]这里append可以自动把数字转为字符串</span></span><br><span class="line">        build(root.left,string);</span><br><span class="line">        build(root.right,string);       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*主函数：将字符串反序列化成一棵二叉树*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">deserialize</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;String&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String s : data.split(<span class="string">&quot;,&quot;</span>))&#123;  <span class="comment">//[6]sqlit的作用,循环的使用</span></span><br><span class="line">            list.addLast(s);  <span class="comment">//[7]</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> deFind(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*辅助函数：把list中的内容存到二叉树中*/</span></span><br><span class="line">    <span class="function">TreeNode <span class="title">deFind</span><span class="params">(LinkedList&lt;String&gt; list)</span></span>&#123;  <span class="comment">//[8]注意括号里的写法</span></span><br><span class="line">        <span class="keyword">if</span>(list.isEmpty())&#123;  <span class="comment">//[9]判空，结束条件</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String string = list.removeFirst();  <span class="comment">//[10]removeFirst功能</span></span><br><span class="line">        <span class="keyword">if</span>(string.equals(<span class="string">&quot;null&quot;</span>))&#123;  <span class="comment">//[11]</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(Integer.parseInt(string));  <span class="comment">//[12]字符串变数字</span></span><br><span class="line">        root.left = deFind(list);</span><br><span class="line">        root.right = deFind(list);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1>语法上的一些细节</h1>
-<p><strong>1.<code>StringBuiler</code></strong></p>
-<p>[1]什么时候用<code>StringBuilder</code>而不是用<code>String</code>呢？</p>
-<p>当需要用许多小段的字符串来构建一个大的字符串时使用StringBuilder，因为如果使用字符串拼接的方法效率比较低，每次拼接字符串时都会构建一个新的<code>String</code>对象，既耗时，又费空间。</p>
-<p><code>StringBuilder append(String str)</code>和<code>StringBuilder append(Char c)</code>方法就能非常轻松地在字符串末尾追加字符串或字符。</p>
-<p>[2]<code>StringBuilder</code>还有一个方法是<code>String toString()</code>，其功能是返回一个与构建器或缓冲器内容相同的字符串。</p>
-<p><strong>2.String</strong></p>
-<p>[3]<code>String substring(int beginIndex)</code>:返回从beginIndex到末尾的所以字符</p>
-<p><code>String substring(int beginIndex,int endIndex)</code>:返回从beginIndex到endIndex - 1的所有字符</p>
-<p>[6]data.split(“,”)的功能：将data这个字符串按照 ”,“ 分开，分成好多个小字符串存到一个字符串数组中。</p>
-<p><strong>[11]检测字符串相等为什么用equals方法而不是==？</strong></p>
-<p>==只能够确定两个字符串是否在同一位置，当然在同一位置的字符串肯定是相等的，但是不在同一位置的字符串也有可能相等。</p>
-<p>[12]字符串变数字Integer.parseInt(string)</p>
-<p><strong>3.for each循环，也叫增强for循环</strong></p>
-<p>[6]例子：for(int element : a) 其中a是个数组，前面是一个存储数组中元素的一个变量。整个语句读作循环a中的每一个元素</p>
-<p>适用于处理一个集合中的所有元素，因为这样根本不需要考虑下标的起始值和终止值。</p>
-<p><strong>4.LinkedList&lt;&gt;</strong></p>
-<p>[7] void addLast(E element)：将某个元素添加到列表的尾部。</p>
-<p>[8]如果是一个集合作函数的参数，尖括号中的内容被忘了写<code>TreeNode deFind(LinkedList&lt;String&gt; list)</code></p>
-<p>[9]链表判空 isEmpty()</p>
-<p>[10]E removeFirst() : 删除并返回链表的首元素</p>
-]]></content>
-      <categories>
-        <category>算法刷题</category>
       </categories>
   </entry>
 </search>
