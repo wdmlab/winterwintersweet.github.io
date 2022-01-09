@@ -19,25 +19,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"winterwintersweet.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":15,"offset":10},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="走夜路请放声歌唱">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wintersweetsblog">
-<meta property="og:url" content="https://winterwintersweet.github.io/archives/2022/01/index.html">
+<meta name="description" content="题目 1373 二叉搜索树的最大键值和 思路 首先要判断都有哪些是二叉搜索树，再求出键值和，更新最大值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【二叉树】1373 二叉搜索树的最大键值和">
+<meta property="og:url" content="https://winterwintersweet.github.io/2022/01/09/22-54-05/index.html">
 <meta property="og:site_name" content="wintersweetsblog">
-<meta property="og:description" content="走夜路请放声歌唱">
+<meta property="og:description" content="题目 1373 二叉搜索树的最大键值和 思路 首先要判断都有哪些是二叉搜索树，再求出键值和，更新最大值。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-09T14:54:05.769Z">
+<meta property="article:modified_time" content="2022-01-09T14:54:06.019Z">
 <meta property="article:author" content="coder">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://winterwintersweet.github.io/archives/2022/01/">
+<link rel="canonical" href="https://winterwintersweet.github.io/2022/01/09/22-54-05/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2022/01/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://winterwintersweet.github.io/2022/01/09/22-54-05/","path":"2022/01/09/22-54-05/","title":"【二叉树】1373 二叉搜索树的最大键值和"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | wintersweetsblog</title>
+<title>【二叉树】1373 二叉搜索树的最大键值和 | wintersweetsblog</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -81,7 +83,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">wintersweetsblog</h1>
+      <p class="site-title">wintersweetsblog</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">脚踏实地地向【内】索取</p>
@@ -144,7 +146,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -157,6 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -210,210 +213,114 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 12 篇文章。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://winterwintersweet.github.io/2022/01/09/22-54-05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="coder">
+      <meta itemprop="description" content="走夜路请放声歌唱">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wintersweetsblog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【二叉树】1373 二叉搜索树的最大键值和
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h5 id="题目">题目</h5>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-sum-bst-in-binary-tree/">1373 二叉搜索树的最大键值和</a></p>
+<h5 id="思路">思路</h5>
+<p>首先要判断都有哪些是二叉搜索树，再求出键值和，更新最大值。</p>
+<span id="more"></span>
+<p>找线索二叉树：先判断左右子树是不是二叉搜索树，再用本结点的值和左子树的最大值比较，和右子树的最小值比较。</p>
+<p>找一颗树的最大值/最小值：找左子树的最大值/最小值，找右子树的最大值/最小值，再和根节点的值比较</p>
+<p>求一棵树的结点值的和：先求左子树的和，再求右子树的和，最后加上根节点的值。</p>
+<p>以上都表明这道题用后序遍历好做。</p>
+<p>技巧是设置一个四个单位的数组：</p>
+<p>res[0]:1表示以该节点为根的二叉树是二叉搜索树</p>
+<p>res[1]:存储以该节点为根的二叉树的最小值</p>
+<p>res[2]:存储以该节点为根的二叉树的最大值</p>
+<p>res[3]:存储以该节点为根的二叉树的键值和</p>
+<h5 id="代码">代码</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int max = Integer.MIN_VALUE;  //全局变量</span><br><span class="line">    public int maxSumBST(TreeNode root) &#123;</span><br><span class="line">        traverse(root);</span><br><span class="line">        if(max &lt; 0)&#123;  //所有节点都为复数时，输出的是0</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return max;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    /*辅助函数：在遍历二叉树的过程中找到BST并找出最大键值和 */</span><br><span class="line">    int[] traverse(TreeNode root)&#123;</span><br><span class="line">        //如果是空结点，返回的数组中第一个元素是1，即“空”不会影响二叉搜索树，所以看作是二叉搜索树</span><br><span class="line">        if(root == null)&#123;</span><br><span class="line">            int[] b = &#123;1,Integer.MAX_VALUE,Integer.MIN_VALUE,0&#125;;  //怎么表示一个有值的数组，最大值最小值怎么表示</span><br><span class="line">            return b;</span><br><span class="line">        &#125;</span><br><span class="line">        //分别遍历左右子树形成对应的数组</span><br><span class="line">        int[] left = traverse(root.left);</span><br><span class="line">        int[] right = traverse(root.right);</span><br><span class="line">        //后序遍历对根节点的操作</span><br><span class="line">        int[] res = new int[4]; </span><br><span class="line">        if(left[0] == 1 &amp;&amp; right[0] == 1 &amp;&amp; root.val &gt; left[2] &amp;&amp; root.val &lt; right[1])&#123;</span><br><span class="line">            res[0] = 1;</span><br><span class="line">            res[1] = Math.min(root.val,left[1]);</span><br><span class="line">            res[2] = Math.max(root.val,right[2]);</span><br><span class="line">            res[3] = left[3] + right[3] + root.val;</span><br><span class="line">            max = Math.max(max,res[3]);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            res[0] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-09T22:54:05+08:00"
-              content="2022-01-09">
-          01-09
-        </time>
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
       </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/09/22-54-05/" itemprop="url">
-            <span itemprop="name">【二叉树】1373 二叉搜索树的最大键值和</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-08T00:27:02+08:00"
-              content="2022-01-08">
-          01-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/08/00-27-02/" itemprop="url">
-            <span itemprop="name">【二叉树】297 二叉树的序列化与反序列化</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-07T15:35:07+08:00"
-              content="2022-01-07">
-          01-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/07/15-35-07/" itemprop="url">
-            <span itemprop="name">《弃猫》</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-05T23:35:48+08:00"
-              content="2022-01-05">
-          01-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/05/23-35-48/" itemprop="url">
-            <span itemprop="name">【二叉树】652 寻找重复的子树</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-04T22:24:52+08:00"
-              content="2022-01-04">
-          01-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/04/22-24-52/" itemprop="url">
-            <span itemprop="name">【二叉树】106 从中序遍历和后序遍历构造二叉树</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-03T18:42:15+08:00"
-              content="2022-01-03">
-          01-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/03/18-42-15/" itemprop="url">
-            <span itemprop="name">【二叉树】105 从前序与中序遍历序列构造二叉树</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-02T22:28:21+08:00"
-              content="2022-01-02">
-          01-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/02/22-28-21/" itemprop="url">
-            <span itemprop="name">【二叉树】654 最大二叉树</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-01T20:21:22+08:00"
-              content="2022-01-01">
-          01-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/01/20-21-22/" itemprop="url">
-            <span itemprop="name">2021年度总结</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-01T12:57:01+08:00"
-              content="2022-01-01">
-          01-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/01/12-57-01/" itemprop="url">
-            <span itemprop="name">【二叉树】114 二叉树展开为链表</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-
     </div>
-  </div>
-  
-  
-  
 
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/08/00-27-02/" rel="prev" title="【二叉树】297 二叉树的序列化与反序列化">
+                  <i class="fa fa-chevron-left"></i> 【二叉树】297 二叉树的序列化与反序列化
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81NTA3MS8zMTUzOQ=="></div>
 </div>
   </main>
 
