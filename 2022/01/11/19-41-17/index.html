@@ -19,27 +19,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"winterwintersweet.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":15,"offset":10},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="书名：《弃猫》 出版社：花城出版社 作者：村上春树">
+<meta name="description" content="题目 144 二叉树的前序遍历 思路一 遍历的思路，在前序遍历的过程中把每个结点放到集合中，前序遍历。 代码一 12345678910111213141516class Solution &amp;#123;    LinkedList&lt;Integer&gt; list &#x3D; new LinkedList&lt;&gt;();    public List&lt;Integer&gt; preorde">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《弃猫》">
-<meta property="og:url" content="https://winterwintersweet.github.io/2022/01/07/15-35-07/index.html">
+<meta property="og:title" content="【二叉树】144 二叉树的前序遍历">
+<meta property="og:url" content="https://winterwintersweet.github.io/2022/01/11/19-41-17/index.html">
 <meta property="og:site_name" content="wintersweetsblog">
-<meta property="og:description" content="书名：《弃猫》 出版社：花城出版社 作者：村上春树">
+<meta property="og:description" content="题目 144 二叉树的前序遍历 思路一 遍历的思路，在前序遍历的过程中把每个结点放到集合中，前序遍历。 代码一 12345678910111213141516class Solution &amp;#123;    LinkedList&lt;Integer&gt; list &#x3D; new LinkedList&lt;&gt;();    public List&lt;Integer&gt; preorde">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-07T07:35:07.786Z">
-<meta property="article:modified_time" content="2022-01-07T08:11:04.641Z">
+<meta property="article:published_time" content="2022-01-11T11:41:17.460Z">
+<meta property="article:modified_time" content="2022-01-11T12:13:41.874Z">
 <meta property="article:author" content="coder">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://winterwintersweet.github.io/2022/01/07/15-35-07/">
+<link rel="canonical" href="https://winterwintersweet.github.io/2022/01/11/19-41-17/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://winterwintersweet.github.io/2022/01/07/15-35-07/","path":"2022/01/07/15-35-07/","title":"《弃猫》"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://winterwintersweet.github.io/2022/01/11/19-41-17/","path":"2022/01/11/19-41-17/","title":"【二叉树】144 二叉树的前序遍历"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>《弃猫》 | wintersweetsblog</title>
+<title>【二叉树】144 二叉树的前序遍历 | wintersweetsblog</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -159,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%8A%B1%E5%9F%8E%E5%87%BA%E7%89%88%E7%A4%BE%E8%BF%98%E6%9C%89%E5%93%AA%E4%BA%9B%E5%A5%BD%E4%B9%A6%E5%90%97%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">花城出版社还有哪些好书吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%99%E6%9C%AC%E4%B9%A6%E8%AE%B2%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">这本书讲了什么？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%83%E7%8C%AB%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">弃猫是什么意思？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AB%99%E8%B0%81%E4%B8%80%E8%BE%B9%EF%BC%9F%E6%9B%BF%E8%B0%81%E8%AF%B4%E8%AF%9D%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">站谁一边？替谁说话？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%91%E5%8F%A5%E4%B8%8E%E8%A7%82%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">金句与观点</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80"><span class="nav-number">2.</span> <span class="nav-text">思路一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%B8%80"><span class="nav-number">3.</span> <span class="nav-text">代码一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C"><span class="nav-number">4.</span> <span class="nav-text">思路二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BA%8C"><span class="nav-number">5.</span> <span class="nav-text">代码二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">语法</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -224,7 +224,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://winterwintersweet.github.io/2022/01/07/15-35-07/">
+    <link itemprop="mainEntityOfPage" href="https://winterwintersweet.github.io/2022/01/11/19-41-17/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -237,7 +237,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          《弃猫》
+          【二叉树】144 二叉树的前序遍历
         </h1>
 
         <div class="post-meta-container">
@@ -248,7 +248,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%B9%A6%E7%B1%8D/" itemprop="url" rel="index"><span itemprop="name">书籍</span></a>
+          <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
         </span>
     </span>
 
@@ -269,33 +269,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>书名</strong>：《弃猫》<br>
-<strong>出版社</strong>：花城出版社<br>
-<strong>作者</strong>：村上春树</p>
-<span id="more"></span>
-<img align = "center" src = "https://cdn.jsdelivr.net/gh/winterwintersweet/image/202201061617406.jpg" width = "270" height = "400">
-<p align = "center"> <font size = "2"> 《弃猫》</font></p>
-<h5 id="花城出版社还有哪些好书吗？">花城出版社还有哪些好书吗？</h5>
-<p>《这边风景》《出梁庄记》《平原客》《遥远的向日葵地》《下弦月》《乙卯年雨雪》</p>
-<p>《遥远的向日葵地》是李娟的作品，不错不错！👍</p>
-<h5 id="这本书讲了什么？">这本书讲了什么？</h5>
-<p>村上春树通过回忆和考证父亲的过去渐渐增加了对他的了解，同时也通过这种追忆探讨了偶然与必然之下的命运，对待历史的态度以及战争对人们命运的影响，总之，我觉得这本书在探讨的核心话题是<strong>命运</strong>。</p>
-<h5 id="弃猫是什么意思？">弃猫是什么意思？</h5>
-<p>弃猫就是被丢弃的猫，村上春树以“他和父亲去海边丢弃一只猫”这件事为开头写了这本书，故事的细节是这样的：父亲和他去海边丢弃一只猫，然后刚回到家却发现猫抢到二人前头先回了家。</p>
-<blockquote>
-<p>我还记得父亲那时一脸的惊讶。但他神情中的惊讶不久就转为叹服，最后好像还松了口气。</p>
-</blockquote>
-<p>丢猫这件事其实和父亲幼时的命运是暗合的，那时不少孩子多的家庭会把长子之外的孩子送给别家做养子或送到寺院当小和尚，父亲是家中的次子，曾被送到奈良的某座寺院，但似乎是因为父亲难以适应新的环境，就又被送回了老家，当父亲看到一只被自己丢弃的小猫竟然赶在自己前头回到了家，也会联想到自己幼时的命运吧？“叹服”和“松了口气”也就可以理解了。</p>
-<h5 id="站谁一边？替谁说话？">站谁一边？替谁说话？</h5>
-<p>村上春树在回忆父亲侵华战争时这样写到：</p>
-<blockquote>
-<p>一支连机械化都未完全实现，也难以指望燃料充足补给的战斗部队——马几乎是唯一的代步工具——要走这么远的路，一定是一趟异常艰难的苦行。（后略）</p>
-</blockquote>
-<p>侵华日军给中国人民带来了极其沉重的苦难，这里村上春树以作为军人身份的父亲的儿子的视角写日军行军困难，虽然表面上陈述事实，但我觉得连无可厚非都说不上，因为侵华的行为本身就是错误的。我想起了政治课上老师讲过的立场问题，所谓立场问题，就是站在谁这一边，为谁说话的问题，身为中国人，当然要站在中国人民这一方，为中国人民说话。</p>
-<h5 id="金句与观点">金句与观点</h5>
-<blockquote>
-<p>最终，我们每一个人不过是把这份偶然当成独一无二来生活罢了。</p>
-</blockquote>
+        <h5 id="题目">题目</h5>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/">144 二叉树的前序遍历</a></p>
+<h5 id="思路一">思路一</h5>
+<p><strong>遍历</strong>的思路，在前序遍历的过程中把每个结点放到集合中，前序遍历。</p>
+<h5 id="代码一">代码一</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        traverse(root);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*辅助函数：前序遍历二叉树*/</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(root.val);</span><br><span class="line">        traverse(root.left);</span><br><span class="line">        traverse(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="思路二">思路二</h5>
+<p><strong>分解</strong>的思路，因为前序遍历二叉树形成的数组形式是这样的。</p>
+<img align = "center" src = "https://cdn.jsdelivr.net/gh/winterwintersweet/image/202201112003890.png" width = "400" height = "260">
+<p>把根节点加入list，再把左子树的前序序列加入list，再把右子树的前序序列加入list</p>
+<h5 id="代码二">代码二</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> list;  <span class="comment">//深入到了叶节点下边，此时list中也有元素啊，也要返回list</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//把根节点添加到集合list中</span></span><br><span class="line">        list.add(root.val);</span><br><span class="line">        <span class="comment">//把左子树变成一个集合，在把集合中的所有元素添加到集合list中</span></span><br><span class="line">        list.addAll(preorderTraversal(root.left));</span><br><span class="line">        <span class="comment">//把右子树变成一个集合，再把结合中的所有元素添加到集合list中</span></span><br><span class="line">        list.addAll(preorderTraversal(root.right));</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="语法">语法</h5>
+<p>将一个集合中的所有元素添加到另一个结合中的给定位置。</p>
+<p><code>void addAll(int i, Collection&lt;? extends E&gt; c);</code></p>
+<p>i：用于指定集合c的第一个元素插入的位置</p>
+<p>c: 把集合c中的元素插入进去</p>
 
     </div>
 
@@ -315,14 +305,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/01/05/23-35-48/" rel="prev" title="【二叉树】652 寻找重复的子树">
-                  <i class="fa fa-chevron-left"></i> 【二叉树】652 寻找重复的子树
+                <a href="/2022/01/10/20-22-59/" rel="prev" title="【二叉树】104 二叉树的最大深度">
+                  <i class="fa fa-chevron-left"></i> 【二叉树】104 二叉树的最大深度
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/01/08/00-27-02/" rel="next" title="【二叉树】297 二叉树的序列化与反序列化">
-                  【二叉树】297 二叉树的序列化与反序列化 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
