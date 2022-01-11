@@ -457,4 +457,26 @@
         <category>书籍</category>
       </categories>
   </entry>
+  <entry>
+    <title></title>
+    <url>/2022/01/11/21-13-28/</url>
+    <content><![CDATA[<h5 id="题目">题目</h5>
+<p><a href="https://leetcode-cn.com/problems/diameter-of-binary-tree/">543 二叉树的直径</a></p>
+<h5 id="思路一">思路一</h5>
+<p><strong>分解的思路</strong>。</p>
+<p>计算左子树的直径长度，计算右子树的直径长度，再计算根节点的直径长度，最后三者比较取最大值。</p>
+<p>计算根节点直径长度的具体办法：左子树深度 + 右子树深度</p>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> leftDiameter = diameterOfBinaryTree(root.left);</span><br><span class="line">        <span class="keyword">int</span> rightDiameter = diameterOfBinaryTree(root.right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> leftMax = depth(root.left);</span><br><span class="line">        <span class="keyword">int</span> rightMax = depth(root.right);</span><br><span class="line">        <span class="keyword">int</span> rootDiameter = lef tMax + rightMax;</span><br><span class="line">        <span class="keyword">return</span> Math.max(rootDiameter,Math.max(leftDiameter,rightDiameter));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*计算二叉树的深度*/</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">depth</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> left = depth(root.left);</span><br><span class="line">        <span class="keyword">int</span> right = depth(root.right);</span><br><span class="line">        <span class="keyword">return</span> Math.max(left,right) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="思路二">思路二</h5>
+<p><strong>遍历的思路</strong></p>
+<p>计算二叉树的深度，在计算二叉树的深度的过程中顺便在后序遍历的位置计算每个节点的直径长度，并不断更新最大值</p>
+<h5 id="代码二">代码二</h5>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxDiameter = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        depth(root);</span><br><span class="line">        <span class="keyword">return</span> maxDiameter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*辅助函数：计算二叉树的深度，在计算二叉树的深度的过程中顺便在后序遍历的位置计算每个节点的直径长度，并不断更新最大值*/</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">depth</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> leftDepth = depth(root.left);</span><br><span class="line">        <span class="keyword">int</span> rightDepth = depth(root.right);</span><br><span class="line">        <span class="comment">//后序遍历的位置</span></span><br><span class="line">        <span class="keyword">int</span> rootDiameter = leftDepth + rightDepth;  <span class="comment">//计算根节点的直径长度</span></span><br><span class="line">        maxDiameter = Math.max(maxDiameter,rootDiameter);  <span class="comment">//更新直径长度的最大值</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + Math.max(leftDepth,rightDepth);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>**注：**思路二更快。</p>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
 </search>
