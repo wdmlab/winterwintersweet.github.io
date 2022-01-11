@@ -19,15 +19,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"winterwintersweet.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":15,"offset":10},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="题目 144 二叉树的前序遍历 思路一 遍历的思路，在前序遍历的过程中把每个结点放到集合中，前序遍历。 代码一 12345678910111213141516class Solution &amp;#123;    LinkedList&lt;Integer&gt; list &#x3D; new LinkedList&lt;&gt;();    public List&lt;Integer&gt; preorde">
+<meta name="description" content="题目 144 二叉树的前序遍历 思路一 遍历的思路，在前序遍历的过程中把每个结点放到集合中，前序遍历。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【二叉树】144 二叉树的前序遍历">
 <meta property="og:url" content="https://winterwintersweet.github.io/2022/01/11/19-41-17/index.html">
 <meta property="og:site_name" content="wintersweetsblog">
-<meta property="og:description" content="题目 144 二叉树的前序遍历 思路一 遍历的思路，在前序遍历的过程中把每个结点放到集合中，前序遍历。 代码一 12345678910111213141516class Solution &amp;#123;    LinkedList&lt;Integer&gt; list &#x3D; new LinkedList&lt;&gt;();    public List&lt;Integer&gt; preorde">
+<meta property="og:description" content="题目 144 二叉树的前序遍历 思路一 遍历的思路，在前序遍历的过程中把每个结点放到集合中，前序遍历。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-11T11:41:17.460Z">
-<meta property="article:modified_time" content="2022-01-11T12:13:41.874Z">
+<meta property="article:modified_time" content="2022-01-11T12:19:47.677Z">
 <meta property="article:author" content="coder">
 <meta name="twitter:card" content="summary">
 
@@ -273,6 +273,7 @@
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/">144 二叉树的前序遍历</a></p>
 <h5 id="思路一">思路一</h5>
 <p><strong>遍历</strong>的思路，在前序遍历的过程中把每个结点放到集合中，前序遍历。</p>
+<span id="more"></span>
 <h5 id="代码一">代码一</h5>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        traverse(root);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*辅助函数：前序遍历二叉树*/</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(root.val);</span><br><span class="line">        traverse(root.left);</span><br><span class="line">        traverse(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="思路二">思路二</h5>
