@@ -479,4 +479,23 @@
         <category>算法刷题</category>
       </categories>
   </entry>
+  <entry>
+    <title>【二叉树】669 修剪二叉搜索树</title>
+    <url>/2022/01/13/20-44-05/</url>
+    <content><![CDATA[<h5 id="题目">题目</h5>
+<p><a href="https://leetcode-cn.com/problems/trim-a-binary-search-tree/">669 修剪二叉搜索树</a></p>
+<h5 id="思路">思路</h5>
+<p>用<strong>分解的思路</strong>，先修剪左子树，再修剪右子树，最后对根节点进行操作。后序遍历。</p>
+<span id="more"></span>
+<p>对于根节点就有两种情况：</p>
+<p>1.root.val &lt; low，则只留下右子树</p>
+<p>2.root.val &gt; high，则只留下左子树</p>
+<p>3.rot.val在low 与high之间，那么不做任何处理。</p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">trimBST</span><span class="params">(TreeNode root, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        root.left = trimBST(root.left,low,high);</span><br><span class="line">        root.right = trimBST(root.right,low,high);</span><br><span class="line">        <span class="keyword">if</span>(root.val &lt; low)&#123;</span><br><span class="line">            root = root.right;  <span class="comment">//root.val &lt; low，则只留下右子树</span></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.val &gt; high)&#123;</span><br><span class="line">            root = root.left;  <span class="comment">//root.val &gt; high，则只留下左子树</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
 </search>
