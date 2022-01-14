@@ -498,4 +498,20 @@
         <category>算法刷题</category>
       </categories>
   </entry>
+  <entry>
+    <title>【二叉树】124 二叉树的最大路径和</title>
+    <url>/2022/01/14/23-15-07/</url>
+    <content><![CDATA[<h5 id="题目">题目</h5>
+<p><a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/">124 二叉树的最大路径和</a></p>
+<h5 id="思路">思路</h5>
+<p>对于经过某节点的最大路径和等于什么？若左子树的单边最大路径长度小于0，右子树的单边路径长度也小于0，那么经过该结点的单<span id="more"></span>边路径长度等于该结点的值。如果左右子树的单边最大路径长度有大于0的，才加到该结点的值上组合到一起成为经过该结点的最大路径和。</p>
+<p>因此本题的思路是在计算单边最大路径和的遍历过程中在后续位置上顺便计算每个节点的最大路径和并更新最大值。</p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = Integer.MIN_VALUE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        oneSideMax(root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*辅助函数：在计算以root为根节点的最大单边路径长度的过程中计算最大路径和 ，这是一个后序遍历的过程*/</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">oneSideMax</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> leftSizeMax = oneSideMax(root.left);</span><br><span class="line">        <span class="keyword">int</span> rightSizeMax = oneSideMax(root.right);</span><br><span class="line">        <span class="comment">/*顺便计算这个根节点的最大路径和，并更新最大值 */</span></span><br><span class="line">        <span class="comment">//为什么要设置这两个判断？因为如果左右子树最大单边路径长度&lt;0，</span></span><br><span class="line">        <span class="comment">//那么对于增加此时的根节点的最大单边路径长度是没有帮助的，所以设置为0</span></span><br><span class="line">        <span class="keyword">if</span>(leftSizeMax &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            leftSizeMax = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(rightSizeMax &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            rightSizeMax = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rootPathMax = leftSizeMax + rightSizeMax + root.val;  <span class="comment">//为什么一定要加上root.val，因为这就是要计算经过此结点的最大路径和</span></span><br><span class="line">        res = Math.max(res,rootPathMax);</span><br><span class="line">        <span class="comment">/*计算根节点的最大单边路径长度 */</span></span><br><span class="line">        <span class="keyword">return</span> Math.max(leftSizeMax,rightSizeMax) + root.val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：这道题的思路和<a href="https://winterwintersweet.github.io/2022/01/11/21-13-28/#more">【二叉树】543 二叉树的直径</a>的思路二是相同的。</p>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
 </search>
