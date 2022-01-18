@@ -19,27 +19,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"winterwintersweet.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":15,"offset":10},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="题目 515 在每个树行中找最大值 思路 利用遍历的思想，二叉树的层次遍历，在每一行找出最大值添加到list数组中。">
+<meta name="description" content="题目 538 把二叉搜索树转换为累加树 思路 对于每一个结点node，把所有大于等于node.val的结点的值都加起来，赋给node。由此想到了通过右根左的中序遍历形成BST的降序排列，利用sum记录大于等于node.val的所有节点的值之和。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【二叉树】515 在每个树行中找最大值">
-<meta property="og:url" content="https://winterwintersweet.github.io/2022/01/15/21-37-43/index.html">
+<meta property="og:title" content="【二叉搜索树】538 把二叉搜索树转换为累加树">
+<meta property="og:url" content="https://winterwintersweet.github.io/2022/01/18/22-10-09/index.html">
 <meta property="og:site_name" content="wintersweetsblog">
-<meta property="og:description" content="题目 515 在每个树行中找最大值 思路 利用遍历的思想，二叉树的层次遍历，在每一行找出最大值添加到list数组中。">
+<meta property="og:description" content="题目 538 把二叉搜索树转换为累加树 思路 对于每一个结点node，把所有大于等于node.val的结点的值都加起来，赋给node。由此想到了通过右根左的中序遍历形成BST的降序排列，利用sum记录大于等于node.val的所有节点的值之和。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-15T13:37:43.860Z">
-<meta property="article:modified_time" content="2022-01-15T13:39:10.838Z">
+<meta property="article:published_time" content="2022-01-18T14:10:09.481Z">
+<meta property="article:modified_time" content="2022-01-18T14:10:09.758Z">
 <meta property="article:author" content="coder">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://winterwintersweet.github.io/2022/01/15/21-37-43/">
+<link rel="canonical" href="https://winterwintersweet.github.io/2022/01/18/22-10-09/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://winterwintersweet.github.io/2022/01/15/21-37-43/","path":"2022/01/15/21-37-43/","title":"【二叉树】515 在每个树行中找最大值"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://winterwintersweet.github.io/2022/01/18/22-10-09/","path":"2022/01/18/22-10-09/","title":"【二叉搜索树】538 把二叉搜索树转换为累加树"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>【二叉树】515 在每个树行中找最大值 | wintersweetsblog</title>
+<title>【二叉搜索树】538 把二叉搜索树转换为累加树 | wintersweetsblog</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -224,7 +224,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://winterwintersweet.github.io/2022/01/15/21-37-43/">
+    <link itemprop="mainEntityOfPage" href="https://winterwintersweet.github.io/2022/01/18/22-10-09/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -237,7 +237,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【二叉树】515 在每个树行中找最大值
+          【二叉搜索树】538 把二叉搜索树转换为累加树
         </h1>
 
         <div class="post-meta-container">
@@ -270,15 +270,12 @@
     
     <div class="post-body" itemprop="articleBody">
         <h5 id="题目">题目</h5>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-largest-value-in-each-tree-row/">515 在每个树行中找最大值</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree/">538 把二叉搜索树转换为累加树</a></p>
 <h5 id="思路">思路</h5>
-<p>利用<strong>遍历的思想</strong>，二叉树的层次遍历，在每一行找出最大值添加到list数组中。</p>
+<p>对于每一个结点node，把所有大于等于node.val的结点的值都加起来，赋给node。由此想到了通过右根左的中序遍历形成BST的降序排列，利用sum记录大于等于node.val的所有节点的值之和。</p>
 <span id="more"></span>
-<p>二叉树层次遍历的框架</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入一棵二叉树的根节点，层次遍历这棵二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">levelTraverse</span><span class="params">(TreeNode tree)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    q.offer(root);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!q.isEmpty())&#123;</span><br><span class="line">        <span class="keyword">int</span> size = q.size();</span><br><span class="line">        <span class="comment">//出去一个结点，就把它的左右子树的根节点添加到队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)&#123;</span><br><span class="line">            TreeNode node = q.poll();</span><br><span class="line">            <span class="keyword">if</span>(node.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                q.offer(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(node.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">                q.offer(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一个for循环遍历一层结点，整个while循环从上到下遍历完整棵二叉树</p>
 <h5 id="代码">代码</h5>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">largestValues</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> list;  <span class="comment">//这里为什么是list,当给的是一颗空树的时候也要返回一个List&lt;Integer&gt;才可以，函数签名要求的。</span></span><br><span class="line">        &#125;</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        q.add(root);</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())&#123;  <span class="comment">//队列判空怎么写</span></span><br><span class="line">            <span class="keyword">int</span> size = q.size();</span><br><span class="line">            <span class="keyword">int</span> max = Integer.MIN_VALUE;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)&#123;</span><br><span class="line">                TreeNode node = q.poll();</span><br><span class="line">                <span class="keyword">int</span> num = node.val;</span><br><span class="line">                max = Math.max(max,num);</span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    q.add(node.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    q.add(node.right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            list.add(max);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">convertBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        traverse(root);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*辅助函数，中序遍历BST，在中序遍历的位置改变每个节点的值。 */</span></span><br><span class="line">    <span class="comment">/*先遍历右子树，再处理结点，再遍历左子树，形成降序序列 */</span></span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="function">TreeNode <span class="title">traverse</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        traverse(root.right);</span><br><span class="line">        sum = sum + root.val;</span><br><span class="line">        root.val = sum;</span><br><span class="line">        traverse(root.left);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -298,14 +295,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/01/14/23-15-07/" rel="prev" title="【二叉树】124 二叉树的最大路径和">
-                  <i class="fa fa-chevron-left"></i> 【二叉树】124 二叉树的最大路径和
+                <a href="/2022/01/18/21-31-40/" rel="prev" title="【二叉搜索树】230 二叉搜索树第k小的元素">
+                  <i class="fa fa-chevron-left"></i> 【二叉搜索树】230 二叉搜索树第k小的元素
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/01/18/21-31-40/" rel="next" title="【二叉搜索树】230 二叉搜索树第k小的元素">
-                  【二叉搜索树】230 二叉搜索树第k小的元素 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

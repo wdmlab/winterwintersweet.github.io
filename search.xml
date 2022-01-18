@@ -551,4 +551,19 @@
         <category>书籍</category>
       </categories>
   </entry>
+  <entry>
+    <title>【二叉搜索树】538 把二叉搜索树转换为累加树</title>
+    <url>/2022/01/18/22-10-09/</url>
+    <content><![CDATA[<h5 id="题目">题目</h5>
+<p><a href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree/">538 把二叉搜索树转换为累加树</a></p>
+<h5 id="思路">思路</h5>
+<p>对于每一个结点node，把所有大于等于node.val的结点的值都加起来，赋给node。由此想到了通过右根左的中序遍历形成BST的降序排列，利用sum记录大于等于node.val的所有节点的值之和。</p>
+<span id="more"></span>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">convertBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        traverse(root);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*辅助函数，中序遍历BST，在中序遍历的位置改变每个节点的值。 */</span></span><br><span class="line">    <span class="comment">/*先遍历右子树，再处理结点，再遍历左子树，形成降序序列 */</span></span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="function">TreeNode <span class="title">traverse</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        traverse(root.right);</span><br><span class="line">        sum = sum + root.val;</span><br><span class="line">        root.val = sum;</span><br><span class="line">        traverse(root.left);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
 </search>
