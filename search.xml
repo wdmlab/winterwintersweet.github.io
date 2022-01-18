@@ -532,4 +532,23 @@
         <category>书籍</category>
       </categories>
   </entry>
+  <entry>
+    <title>【二叉搜索树】230 二叉搜索树第k小的元素</title>
+    <url>/2022/01/18/21-31-40/</url>
+    <content><![CDATA[<h5 id="题目">题目</h5>
+<p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/">230 二叉搜索树第k小的元素</a></p>
+<h5 id="思路">思路</h5>
+<p>二叉搜索树的三个重要性质<span id="more"></span></p>
+<p>1.对于BST的每一个结点node，左子树结点的值都小于node的值，右子树结点的值都大于node的值。</p>
+<p>2.对于BST的每一个结点，左子树和右子树都是BST</p>
+<p>3.BST中序遍历的结果是升序序列。</p>
+<p>对于本题</p>
+<p>利用中序遍历的结果是升序序列来做。</p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = -<span class="number">1</span>;  <span class="comment">//存储第k小的结点的值</span></span><br><span class="line">    <span class="keyword">int</span> rank = <span class="number">0</span>;  <span class="comment">//存放当前节点的排名</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        traverse(root,k);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//辅助函数：中序遍历BST，在中序遍历的位置挑出第k小的结点</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">(TreeNode root,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        traverse(root.left,k);</span><br><span class="line">        rank++;</span><br><span class="line">        <span class="keyword">if</span>(rank == k)&#123;</span><br><span class="line">            res = root.val;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        traverse(root.right,k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
 </search>
