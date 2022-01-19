@@ -566,4 +566,22 @@
         <category>算法刷题</category>
       </categories>
   </entry>
+  <entry>
+    <title>【二叉搜索树】98 验证二叉搜索树</title>
+    <url>/2022/01/19/23-15-33/</url>
+    <content><![CDATA[<h5 id="题目">题目</h5>
+<p><a href="https://leetcode-cn.com/problems/validate-binary-search-tree/">98 验证二叉搜索树</a></p>
+<h5 id="思路">思路</h5>
+<p>依然利用BST左中右遍历得到递增序列的思想。在中序遍历的位置访问结点，如果结点的值小于或等于前一个结点的值，那么就不符合BST，返回false。</p>
+<span id="more"></span>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> pre = Long.MIN_VALUE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> traverse(root);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">traverse</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">boolean</span> isLeft = traverse(root.left);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(root.val &lt;= pre)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        pre = root.val;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> isRight = traverse(root.right);</span><br><span class="line">        <span class="keyword">return</span> isLeft &amp;&amp; isRight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="其他">其他</h5>
+<p>int32位，能表示的范围：-2的31次方 - 2的31次方减1</p>
+<p>long64位，能表示的范围：-2的63次方 - 2的63次方减1</p>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
 </search>
