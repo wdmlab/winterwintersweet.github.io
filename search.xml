@@ -585,7 +585,7 @@
       </categories>
   </entry>
   <entry>
-    <title></title>
+    <title>【二叉搜索树】85 合法二叉搜索树</title>
     <url>/2022/03/01/22-43-24/</url>
     <content><![CDATA[<h1>题目</h1>
 <p><a href="https://leetcode-cn.com/problems/legal-binary-search-tree-lcci/">85 合法二叉搜索树</a></p>
@@ -606,5 +606,8 @@
 <p>这里总结一下中序遍历非递归形式的框架</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;():</span><br><span class="line"><span class="keyword">while</span>(root != <span class="keyword">null</span> || !stack.isEmpty())&#123;</span><br><span class="line">    <span class="keyword">while</span>(root != <span class="keyword">null</span>)&#123;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        root = root.left;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**对结点进行处理**/</span></span><br><span class="line">    root = stack.pop();</span><br><span class="line">    <span class="comment">//处理</span></span><br><span class="line">    <span class="comment">/**对结点进行处理**/</span></span><br><span class="line">    root = root.right;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
   </entry>
 </search>
