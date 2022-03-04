@@ -19,12 +19,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"winterwintersweet.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":15,"offset":10},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="走夜路请放声歌唱">
+<meta name="description" content="追着幸福跑">
 <meta property="og:type" content="website">
 <meta property="og:title" content="wintersweetsblog">
 <meta property="og:url" content="https://winterwintersweet.github.io/index.html">
 <meta property="og:site_name" content="wintersweetsblog">
-<meta property="og:description" content="走夜路请放声歌唱">
+<meta property="og:description" content="追着幸福跑">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="coder">
 <meta name="twitter:card" content="summary">
@@ -84,7 +84,7 @@
       <h1 class="site-title">wintersweetsblog</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">脚踏实地地向【内】索取</p>
+      <p class="site-subtitle" itemprop="description">努力过从容淡定的生活 要一直在这里 不离不弃 用心生活每一天</p>
   </div>
 
   <div class="site-nav-right">
@@ -165,7 +165,7 @@
     <img class="site-author-image" itemprop="image" alt="coder"
       src="/uploads/avatar.jpg">
   <p class="site-author-name" itemprop="name">coder</p>
-  <div class="site-description" itemprop="description">走夜路请放声歌唱</div>
+  <div class="site-description" itemprop="description">追着幸福跑</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
@@ -225,7 +225,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -262,21 +262,15 @@
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/legal-binary-search-tree-lcci/">85 合法二叉搜索树</a></p>
 <h1>思路</h1>
 <p><strong>思路一</strong></p>
-<p>对于一个二叉搜索树，要满足根节点的值大于左子树中所有节点的值，小于右子树中所有结点的值。即一个结点的值是有范围的。可以设置一个函数来判断，参数有结点和结点的范围，这个范围是什么呢？对于根节点来说，是能取到的最小值到最大值之间，左子树根节点的范围是最小值到根节点的值，右子树根节点的范围是根节点的值到最大值。采用根左右的遍历思想。</p>
-<p><strong>思路二</strong></p>
-<p>利用中序遍历二叉搜索树必然有序来做，如果不满足有序则不是二叉搜索树</p>
-<p><strong>思路三</strong></p>
-<p>思路二是中序遍历的递归形式，中序遍历的递归形式可以转化为非递归形式。</p>
-<h1>代码</h1>
-<p>思路一</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> judge(root,Long.MIN_VALUE,Long.MAX_VALUE);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">/*自定义函数：判断每个结点是否符合BST的定义*/</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">judge</span><span class="params">(TreeNode root,<span class="keyword">long</span> min,<span class="keyword">long</span> max)</span></span>&#123;</span><br><span class="line">        <span class="comment">//如果节点为空，则返回true</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//根节点的值有一个范围</span></span><br><span class="line">        <span class="keyword">if</span>(root.val &lt;= min || root.val &gt;= max)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//左子树的根节点的值的范围是最小值到根节点的值，右子树根节点的值的范围是根节点的值到最大值</span></span><br><span class="line">        <span class="keyword">return</span> judge(root.left,min,root.val) &amp;&amp; judge(root.right,root.val,max);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>思路二</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    TreeNode pre;  <span class="comment">//当前节点的前驱节点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!isValidBST(root.left))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pre != <span class="keyword">null</span> &amp;&amp; pre.val &gt;= root.val)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        pre = root;</span><br><span class="line">        <span class="keyword">if</span>(!isValidBST(root.right))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>思路三</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode pre = <span class="keyword">null</span>;  <span class="comment">//当前节点的前驱节点</span></span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(root != <span class="keyword">null</span> || !stack.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">while</span>(root != <span class="keyword">null</span>)&#123;</span><br><span class="line">                stack.push(root);</span><br><span class="line">                root = root.left;</span><br><span class="line">            &#125;</span><br><span class="line">            root = stack.pop();</span><br><span class="line">            <span class="keyword">if</span>(pre != <span class="keyword">null</span> &amp;&amp; pre.val &gt;= root.val)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = root;</span><br><span class="line">            root = root.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里总结一下中序遍历非递归形式的框架</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;():</span><br><span class="line"><span class="keyword">while</span>(root != <span class="keyword">null</span> || !stack.isEmpty())&#123;</span><br><span class="line">    <span class="keyword">while</span>(root != <span class="keyword">null</span>)&#123;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        root = root.left;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**对结点进行处理**/</span></span><br><span class="line">    root = stack.pop();</span><br><span class="line">    <span class="comment">//处理</span></span><br><span class="line">    <span class="comment">/**对结点进行处理**/</span></span><br><span class="line">    root = root.right;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>对于一个二叉搜索树，要满足根节点的值大于左子树中所有节点的值，小于右子树中所有结点的值。即一个结点的值是有范围的。可
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/01/22-43-24/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -307,7 +301,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -382,7 +376,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -457,7 +451,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -532,7 +526,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -607,7 +601,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -682,7 +676,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -757,7 +751,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -834,7 +828,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -909,7 +903,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
       <meta itemprop="name" content="coder">
-      <meta itemprop="description" content="走夜路请放声歌唱">
+      <meta itemprop="description" content="追着幸福跑">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
