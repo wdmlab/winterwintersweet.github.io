@@ -610,4 +610,22 @@
         <category>书籍</category>
       </categories>
   </entry>
+  <entry>
+    <title>【二叉树】543 二叉树的直径</title>
+    <url>/2022/03/04/23-30-37/</url>
+    <content><![CDATA[<h1>题目</h1>
+<p><a href="https://leetcode-cn.com/problems/search-in-a-binary-search-tree/">700 二叉搜索树中的搜索</a></p>
+<h1>思路</h1>
+<p><strong>思路一</strong></p>
+<p>如果是对一棵普通的二叉树进行搜索，那么可以用这个框架。</p>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">TreeNode <span class="title">searchTree</span><span class="params">(TreeNode root,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(root.val == val)&#123;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//在左子树中找，在右子树中找，如果那边找到了就返回哪边</span></span><br><span class="line">    TreeNode left = searchTree(root.left,val);</span><br><span class="line">    TreeNode right = searchTree(root.right,val);</span><br><span class="line">    <span class="keyword">if</span>(left != <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>思路二</strong></p>
+<p>这是一棵二叉搜索树，要充分利用左小右大的性质。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">TreeNode <span class="title">searchTree</span><span class="params">(TreeNode root,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//当目标值小于根节点就去左子树找</span></span><br><span class="line">    <span class="keyword">if</span>(val &lt; root.val)&#123;</span><br><span class="line">        <span class="keyword">return</span> searchTree(root.left,val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//当目标值大于根节点就去右子树找</span></span><br><span class="line">    <span class="keyword">if</span>(val &gt; root.val)&#123;</span><br><span class="line">        <span class="keyword">return</span> searchTree(root.right,val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//不属于上述两种情况就说明当下这个结点就是要找的结点</span></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法刷题</category>
+      </categories>
+  </entry>
 </search>
